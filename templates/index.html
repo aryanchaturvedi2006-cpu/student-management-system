@@ -173,14 +173,14 @@
                 data.forEach(f => {
                     const balance = f.total - f.paid;
                     const statusHtml = balance > 0
-                        ? `<span class="gpa-score low" style="width:auto; padding:4px 8px;">Pending $${balance.toFixed(2)}</span>`
+                        ? `<span class="gpa-score low" style="width:auto; padding:4px 8px;">Pending ₹${balance.toFixed(2)}</span>`
                         : (f.total > 0 ? `<span class="gpa-score high" style="width:auto; padding:4px 8px;">Cleared</span>` : `<span style="color:#6b7280; font-size:12px;">Unassigned</span>`);
 
                     tbody.innerHTML += `
                         <tr>
                             <td>${f.name} <br><span style="font-size:11px; color:#6b7280;">Roll: ${f.roll}</span></td>
-                            <td>$${f.total.toFixed(2)}</td>
-                            <td><span style="color:#34d399;">$${f.paid.toFixed(2)}</span></td>
+                            <td>₹${f.total.toFixed(2)}</td>
+                            <td><span style="color:#34d399;">₹${f.paid.toFixed(2)}</span></td>
                             <td>${f.due || '-'}</td>
                             <td>${statusHtml}</td>
                             <td>
@@ -751,7 +751,7 @@
                         style="color:#fff;"></strong></p>
 
                 <div class="input-group" style="margin-bottom: 20px;">
-                    <label>Total Fee Amount ($)</label>
+                    <label>Total Fee Amount (₹)</label>
                     <input type="number" id="fee-amount" step="0.01" value="0.00" class="glass-input" required>
                 </div>
 
@@ -784,7 +784,7 @@
                         style="color:#fff;"></strong></p>
 
                 <div class="input-group" style="margin-bottom: 20px;">
-                    <label>Amount Received ($)</label>
+                    <label>Amount Received (₹)</label>
                     <input type="number" id="rp-amount" step="0.01" value="" class="glass-input" required
                         placeholder="e.g. 500">
                 </div>
