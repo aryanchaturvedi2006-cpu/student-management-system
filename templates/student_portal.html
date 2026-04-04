@@ -235,17 +235,17 @@
                                 {% if fee_record %}
                                 {% set balance = fee_record[2] - fee_record[3] %}
                                 <div style="font-size: 36px; font-weight: 700; color: #fff; margin: 10px 0;">
-                                    ${{ "%.2f"|format(balance) }}
+                                    ₹{{ "%.2f"|format(balance) }}
                                 </div>
 
                                 <div style="margin-top: 15px; font-size: 14px;">
                                     <div style="display:flex; justify-content:space-between; margin-bottom: 5px;">
                                         <span style="color: #6b7280;">Total Assigned:</span>
-                                        <span>${{ "%.2f"|format(fee_record[2]) }}</span>
+                                        <span>₹{{ "%.2f"|format(fee_record[2]) }}</span>
                                     </div>
                                     <div style="display:flex; justify-content:space-between; margin-bottom: 5px;">
                                         <span style="color: #6b7280;">Amount Paid:</span>
-                                        <span style="color: #34d399;">${{ "%.2f"|format(fee_record[3]) }}</span>
+                                        <span style="color: #34d399;">₹{{ "%.2f"|format(fee_record[3]) }}</span>
                                     </div>
                                     <hr style="border:0; border-top: 1px solid rgba(255,255,255,0.05); margin: 10px 0;">
                                     <div style="display:flex; justify-content:space-between;">
@@ -292,7 +292,7 @@
                                             {% for t in transactions %}
                                             <tr>
                                                 <td>{{ t[3] }}</td>
-                                                <td><span style="color:#34d399;">+${{ "%.2f"|format(t[2]) }}</span></td>
+                                                <td><span style="color:#34d399;">+₹{{ "%.2f"|format(t[2]) }}</span></td>
                                                 <td style="color:#9ca3af;">{{ t[4] }}</td>
                                             </tr>
                                             {% endfor %}
