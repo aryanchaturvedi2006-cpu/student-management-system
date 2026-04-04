@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at top right, #1a1738, #030409 60%);
+        }
+
+        .checkout-box {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .amount {
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        .card-element {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glass-panel checkout-box">
+        <svg width="40" height="40" fill="none" stroke="#6a5af9" stroke-width="1.5" viewBox="0 0 24 24"
+            style="margin-bottom:10px;">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+            </path>
+        </svg>
+        <h2 style="margin:0; font-size:20px; color:#b0a8fe;">Secure Fee Payment Sandbox</h2>
+        <p style="color:#6b7280; font-size: 13px; margin-top:5px;">Simulated Stripe Payment Environment</p>
+
+        <div class="amount">${{ "%.2f"|format(amount) }}</div>
+
+        <form action="/process_payment" method="POST">
+            <input type="hidden" name="student_id" value="{{ student_id }}">
+            <input type="hidden" name="amount" value="{{ amount }}">
+
+            <div class="card-element">
+                <label style="display:block; color:#9ca3af; font-size:12px; margin-bottom:10px;">Card
+                    Information</label>
+                <input type="text" name="card_number" placeholder="4242 4242 4242 4242" class="glass-input" required
+                    maxlength="16" pattern="\d*" style="margin-bottom:10px;">
+                <div style="display:flex; gap:10px;">
+                    <input type="text" placeholder="MM/YY" class="glass-input" required style="width:50%;">
+                    <input type="text" placeholder="CVC" class="glass-input" required style="width:50%;">
+                </div>
+                <p style="font-size: 11px; margin-top:10px; color: #f59e0b;">* You can use any fake numbers in this
+                    sandbox.</p>
+            </div>
+
+            <button type="submit" class="premium-btn" style="width:100%; padding:15px; font-size:16px;">Pay ${{
+                "%.2f"|format(amount) }}</button>
+            <div style="margin-top: 15px;">
+                <a href="/student_dashboard" style="color: #6b7280; text-decoration:none; font-size:14px;">Cancel and
+                    Return</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

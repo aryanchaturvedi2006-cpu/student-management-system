@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at center, #0a1f18, #030409 60%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glass-panel"
+        style="padding: 50px; text-align: center; border-radius: 20px; border-color: rgba(52,211,153,0.2);">
+        <div
+            style="width: 80px; height: 80px; border-radius: 50%; background: rgba(52,211,153,0.1); color: #34d399; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+        <h2 style="margin: 0 0 10px 0; color: #fff;">Payment Successful</h2>
+        <p style="color: #9ca3af; margin: 0 0 30px 0;">Your transaction has been processed and your student records have
+            been officially updated.</p>
+        <a href="/student_dashboard" class="premium-btn"
+            style="text-decoration:none; display:inline-block; padding: 12px 30px;">Return to Portal</a>
+    </div>
+
+</body>
+
+</html>
