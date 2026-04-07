@@ -12,6 +12,7 @@ EduSync is a comprehensive, multi-role web application designed to streamline ac
 - **Admin Access**: Secure master dashboard access to manipulate global database configurations.
 - **Student Access**: Dedicated read-only portals isolated by secure login (using Roll Numbers).
 - **Security Check**: Industry-grade PBKDF2 mathematical password hashing powered by `Werkzeug.security`.
+- **Social Authentication**: Sign in with Google or Microsoft OAuth for seamless access without remembering passwords.
 
 ### 2. Academic Matrix (CRUD)
 - Complete database controls to Create, Read, Update, and Delete student records.
@@ -65,21 +66,46 @@ You need Python 3 installed on your machine. You can download it from [python.or
    pip install -r requirements.txt
    ```
 
-4. **Initialize Database and Start Server**
+4. **Configure OAuth (Optional)**
+   For Google and Microsoft sign-in support:
+   - Follow the detailed setup guide in [OAUTH_SETUP.md](OAUTH_SETUP.md)
+   - Set your OAuth credentials in environment variables or `.env` file
+   - Copy `.env.example` to `.env` and add your credentials
+
+5. **Initialize Database and Start Server**
    ```bash
    python app.py
    ```
    > The script automatically builds `students.db` natively via `sqlite3` execution commands on launch.
 
-5. **Access the application**
+6. **Access the application**
    Open your web browser and navigate to: `http://127.0.0.1:5000`
 
 ### Default System Credentials
 To log in immediately after setup, use the system default administration credentials:
-- **Username**: `admin`
-- **Password**: `admin123`
+- **Username**: `administrator`
+- **Password**: `EduSync@Admin2026`
+
+---
+
+## 🔐 Social Authentication (OAuth)
+
+The system supports secure sign-in with **Google** and **Microsoft** accounts, eliminating the need for users to remember passwords.
+
+### Supported OAuth Providers
+- ✅ **Google** - Sign in with Google Account
+- ✅ **Microsoft** - Sign in with Microsoft/Outlook Account
+
+### Setup Instructions
+For complete OAuth configuration details, see [OAUTH_SETUP.md](OAUTH_SETUP.md)
+
+**Quick Start:**
+1. Set up OAuth apps on Google Cloud Console and Azure Portal
+2. Add your credentials to `.env` file (use `.env.example` as template)
+3. Restart the application
+4. Click "Sign in with Google" or "Sign in with Microsoft" on the login page
 
 ---
 
 ## 🤝 Project Internship Purpose
-This project was heavily engineered to demonstrate complex SaaS capabilities including API construction, DOM manipulation without heavyweight frontend frameworks, Relational Database schema design, and secure cryptography concepts.
+This project was heavily engineered to demonstrate complex SaaS capabilities including API construction, DOM manipulation without heavyweight frontend frameworks, Relational Database schema design, secure cryptography concepts, and modern OAuth authentication flows.
