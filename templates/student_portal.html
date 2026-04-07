@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .badge-urgent { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); padding: 8px 12px; font-size: 11px; border-radius: 6px; }
+        .badge-warning { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); padding: 8px 12px; font-size: 11px; border-radius: 6px; }
+    </style>
     <script>
         function showTab(tabId, el) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -106,6 +110,13 @@
                     </svg>
                     My Fees
                 </a>
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 10px 16px;">
+                <a href="#" class="nav-link" onclick="showTab('resources-tab', this)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    Study Materials
+                </a>
             </nav>
 
             <div class="sidebar-footer">
@@ -122,9 +133,23 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <header class="topbar" style="justify-content: flex-end;">
+            <header class="topbar" style="justify-content: flex-end; align-items:center;">
+                {% if notifications %}
+                <div style="margin-right: 20px; display:flex; flex-direction: column; gap: 5px;">
+                    {% for notif in notifications %}
+                        <div class="badge badge-{{ notif.type }}">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-right: 5px; vertical-align: middle;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                            {{ notif.msg }}
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <div class="user-profile">
+                    {% if student|length > 16 and student[16] and student[16] != '' %}
+                    <img src="{{ url_for('static', filename=student[16]) }}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #b0a8fe;">
+                    {% else %}
                     <div class="avatar">{{ student[1][0] }}</div>
+                    {% endif %}
                 </div>
             </header>
 
@@ -134,6 +159,23 @@
                 <div id="profile-tab" class="tab-content active">
                     <div class="section-header">
                         <h3>Academic Profile</h3>
+                    </div>
+
+                    <!-- Profile Photo Form -->
+                    <div class="glass-panel form-panel" style="max-width: 900px; padding: 30px; margin-bottom: 30px;">
+                        <h4 class="section-subtitle" style="margin-top:0;">Profile Photo Customization</h4>
+                        <div style="display:flex; align-items: center; gap: 20px;">
+                            {% if student|length > 16 and student[16] and student[16] != '' %}
+                            <img src="{{ url_for('static', filename=student[16]) }}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #b0a8fe;">
+                            {% else %}
+                            <div class="avatar" style="width: 80px; height: 80px; font-size: 30px;">{{ student[1][0] }}</div>
+                            {% endif %}
+                            
+                            <form method="POST" action="/upload_profile_pic" enctype="multipart/form-data" style="display:flex; gap:10px; align-items:center;">
+                                <input type="file" name="photo" accept="image/*" class="glass-input" required style="padding-top: 10px; max-width: 250px;">
+                                <button type="submit" class="premium-btn" style="padding: 10px 20px;">Upload Photo</button>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="glass-panel form-panel" style="max-width: 900px; padding: 30px;">
@@ -147,9 +189,10 @@
                             </div>
                             <div style="margin-left: auto; text-align: right;">
                                 <p style="margin:0; font-size: 13px; color: #9ca3af;">Overall GPA</p>
-                                <div class="gpa-score {% if student[10] >= 8.0 %}high{% elif student[10] >= 6.0 %}medium{% else %}low{% endif %}"
+                                {% set gpa = student[10] if student[10] is not none else 0.0 %}
+                                <div class="gpa-score {% if gpa >= 8.0 %}high{% elif gpa >= 6.0 %}medium{% else %}low{% endif %}"
                                     style="display:inline-flex; font-size: 20px; padding: 6px 12px; margin-top: 5px;">
-                                    {{ student[10] }}
+                                    {{ student[10] if student[10] is not none else 'N/A' }}
                                 </div>
                             </div>
                         </div>
@@ -307,6 +350,180 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: RESOURCES & ASSIGNMENTS -->
+                <div id="resources-tab" class="tab-content">
+                    <div class="section-header">
+                        <h3>LMS & Resources</h3>
+                    </div>
+                    
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1200px;">
+                        
+                        <!-- Col 1: Quizzes & Global Materials -->
+                        <div style="display:flex; flex-direction:column; gap:30px;">
+                            
+                            <!-- QUIZZES -->
+                            <div class="glass-panel form-panel">
+                                <h3 style="margin-top:0;">Live Quizzes</h3>
+                                <p style="color:#9ca3af; font-size:13px;">Timed interactive exams with auto-submission locks.</p>
+                                <div class="table-container glass-panel-dark" style="margin-top: 20px;">
+                                    <table class="premium-table">
+                                        <thead><tr><th>Quiz</th><th>Duration</th><th>Action</th></tr></thead>
+                                        <tbody>
+                                            {% if active_quizzes %}
+                                            {% for quiz in active_quizzes %}
+                                            <tr>
+                                                <td><strong>{{ quiz[1] }}</strong><br><span style="font-size:10px; color:#9ca3af;">Due: {{ quiz[2].replace("T", " ") }}</span></td>
+                                                <td><span class="badge-soft">{{ quiz[3] }} mins</span></td>
+                                                <td>
+                                                    {% if quiz[5] %}
+                                                    <span style="color:#34d399; font-size:11px;">Done (Score: {{ "%.1f"|format(quiz[6]) }}%)</span>
+                                                    {% else %}
+                                                    <form method="POST" action="/start_quiz/{{ quiz[0] }}">
+                                                        {% if quiz[4] %}
+                                                        <button type="submit" class="premium-btn" style="padding:5px 10px; font-size:11px; background: rgba(245, 158, 11, 0.2); color:#f59e0b; border-color: rgba(245, 158, 11, 0.4);">Resume</button>
+                                                        {% else %}
+                                                        <button type="submit" class="premium-btn" style="padding:5px 10px; font-size:11px;">Start Timer</button>
+                                                        {% endif %}
+                                                    </form>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% else %}
+                                            <tr><td colspan="3" style="text-align:center; color:#6b7280; font-size:12px;">No active quizzes.</td></tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- LIVE CLASSES -->
+                            <div class="glass-panel form-panel">
+                                <h3 style="margin-top:0;">Live Video Classrooms</h3>
+                                <p style="color:#9ca3af; font-size:13px;">Join active real-time sessions hosted by your teachers.</p>
+                                <div class="table-container glass-panel-dark" style="margin-top: 20px;">
+                                    <table class="premium-table">
+                                        <thead><tr><th>Session</th><th>Action</th></tr></thead>
+                                        <tbody>
+                                            {% if live_classes %}
+                                            {% for cls in live_classes %}
+                                            <tr>
+                                                <td><strong>{{ cls[1] }}</strong><br><span style="font-size:10px; color:#9ca3af;">Started: {{ cls[4] }}</span></td>
+                                                <td>
+                                                    <a href="/join_class/{{ cls[2] }}" class="premium-btn" style="text-decoration:none; padding:5px 10px; font-size:11px; background: rgba(52, 211, 153, 0.2); color:#34d399; border-color: rgba(52, 211, 153, 0.4);">Join Class</a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% else %}
+                                            <tr><td colspan="2" style="text-align:center; color:#6b7280; font-size:12px;">No live classes currently operating.</td></tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Global Materials -->
+                            <div class="glass-panel form-panel">
+                                <h3 style="margin-top:0;">Global Study Materials</h3>
+                                <p style="color:#9ca3af; font-size:13px;">Curriculum materials provided by administrators.</p>
+                                
+                                <div class="table-container glass-panel-dark" style="max-height: 400px; overflow-y:auto; margin-top: 20px;">
+                                    <table class="premium-table">
+                                        <thead><tr><th>Title</th><th>Type</th><th>Action</th></tr></thead>
+                                        <tbody>
+                                            {% if study_materials %}
+                                            {% for doc in study_materials %}
+                                            <tr>
+                                                <td><strong>{{ doc[3] }}</strong></td>
+                                                <td><span class="badge-soft">{{ doc[5] }}</span></td>
+                                                <td><a href="{{ url_for('static', filename=doc[4]) }}" target="_blank" class="premium-btn" style="padding:5px 10px; font-size:11px; text-decoration:none;">Download</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% else %}
+                                            <tr><td colspan="3" style="text-align:center; color:#6b7280;">No materials shared yet.</td></tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Col 2: My Assignments -->
+                        <div class="glass-panel form-panel">
+                            <h3 style="margin-top:0;">My Assignments</h3>
+                            <p style="color:#9ca3af; font-size:13px;">Submit your completed homework files here. Hard deadlines enforced.</p>
+                            
+                            <div style="max-height: 500px; overflow-y:auto; padding-right: 10px;">
+                                {% if task_dashboard %}
+                                {% for task in task_dashboard %}
+                                <div class="dashboard-form" style="margin-bottom: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                                    <div style="display:flex; justify-content: space-between; align-items:flex-start;">
+                                        <h4 style="margin:0; font-size: 15px; color:#fff;">{{ task.title }}</h4>
+                                        {% if task.locked %}
+                                        <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 10px;">LOCKED</span>
+                                        {% else %}
+                                        <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); font-size: 10px;">ACTIVE</span>
+                                        {% endif %}
+                                    </div>
+                                    <p style="font-size: 12px; color: #9ca3af; margin: 5px 0;">Due: {{ task.due }}</p>
+                                    <p style="font-size: 13px; color: #d1d5db; margin: 10px 0;">{{ task.desc }}</p>
+                                    
+                                    <div style="display:flex; justify-content: space-between; font-size: 11px; margin-bottom: 10px; color: #b0a8fe;">
+                                        <span>Attempts Used: {{ task.attempts }} / 2</span>
+                                    </div>
+
+                                    {% if task.can_submit %}
+                                    <form method="POST" action="/upload_document" enctype="multipart/form-data" style="margin-top: 10px;">
+                                        <input type="hidden" name="is_global" value="false">
+                                        <input type="hidden" name="file_type" value="Assignment Submission">
+                                        <input type="hidden" name="title" value="{{ task.title }} Submission">
+                                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                                        
+                                        <div class="input-group">
+                                            <input type="file" name="document" required class="glass-input" style="padding: 8px; font-size: 12px;">
+                                        </div>
+                                        <button type="submit" class="premium-btn" style="margin-top: 10px; width: 100%; font-size: 13px; padding: 10px;">Submit File ({{ 2 - task.attempts }} left)</button>
+                                    </form>
+                                    {% elif task.attempts >= 2 %}
+                                    <div style="padding: 10px; background: rgba(52,211,153,0.1); color: #34d399; text-align:center; border-radius: 8px; font-size: 12px; border: 1px solid rgba(52,211,153,0.3);">
+                                        Max Attempts Exhausted
+                                    </div>
+                                    {% else %}
+                                    <div style="padding: 10px; background: rgba(239,68,68,0.1); color: #ef4444; text-align:center; border-radius: 8px; font-size: 12px; border: 1px solid rgba(239,68,68,0.3);">
+                                        Deadline Passed / Locked
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <div style="text-align:center; color:#6b7280; padding: 20px;">No assignments currently active.</div>
+                                {% endif %}
+
+                                <h4 class="section-subtitle" style="margin-top: 30px; margin-bottom:10px;">My Past Submissions</h4>
+                                <div class="table-container glass-panel-dark" style="max-height: 250px; overflow-y:auto;">
+                                    <table class="premium-table">
+                                        <thead><tr><th>Title</th><th>Date</th><th>File</th></tr></thead>
+                                        <tbody>
+                                            {% if assignments %}
+                                            {% for doc in assignments %}
+                                            <tr>
+                                                <td>{{ doc[3] }}</td>
+                                                <td style="color:#9ca3af; font-size:12px;">{{ doc[6][:10] }}</td>
+                                                <td><a href="{{ url_for('static', filename=doc[4]) }}" target="_blank" style="color:#b0a8fe; text-decoration:underline; font-size:12px;">View</a></td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% else %}
+                                            <tr><td colspan="3" style="text-align:center; color:#6b7280;">No assignments submitted.</td></tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
