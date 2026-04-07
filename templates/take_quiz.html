@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Quiz - EduSync</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .quiz-container { max-width: 800px; margin: 40px auto; padding: 30px; }
+        .timer-bar { position: sticky; top: 0; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 15px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; z-index: 100; backdrop-filter: blur(10px); }
+        .timer-text { font-size: 24px; font-weight: 700; color: #ef4444; font-variant-numeric: tabular-nums; }
+        .question-card { margin-bottom: 25px; padding: 20px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; }
+        .question-text { font-size: 16px; margin-bottom: 15px; font-weight: 500; }
+        .options-grid { display: flex; flex-direction: column; gap: 10px; }
+        .option-label { display: flex; align-items: center; gap: 10px; padding: 10px 15px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; cursor: pointer; transition: 0.2s; }
+        .option-label:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+        input[type="radio"] { accent-color: #b0a8fe; transform: scale(1.2); }
+        .cheat-modal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(8px); }
+        .cheat-box { background:#1f2937; border: 2px solid #ef4444; padding: 40px; border-radius: 15px; max-width: 500px; text-align:center; box-shadow: 0 0 50px rgba(239, 68, 68, 0.2); }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div class="quiz-container glass-panel">
+        <h2 style="margin-top:0;">{{ quiz[1] }}</h2>
+        <p style="color:#9ca3af; margin-bottom: 30px;">Follow all instructions. System enforces strict timing.</p>
+
+        <div class="timer-bar">
+            <div>
+                <strong style="color:#fff;">Time Remaining:</strong>
+                <div style="font-size:12px; color:#9ca3af;">Auto-submits instantly on zero. DONT exit this page.</div>
+            </div>
+            <div class="timer-text" id="countdown-display">00:00:00</div>
+        </div>
+
+        <form id="quiz-form" method="POST" action="/submit_quiz/{{ quiz[0] }}">
+            <input type="hidden" name="cheating_flag" id="cheating_flag" value="false">
+            {% for q in questions %}
+            <div class="question-card">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 15px;">
+                    <div class="question-text" style="margin-bottom:0;">{{ loop.index }}. {{ q.text }}</div>
+                    <span class="status-badge" style="background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border-color: rgba(139, 92, 246, 0.4);">{{ q.marks|default(1) }} Points</span>
+                </div>
+                
+                {% if q.type == 'mcq' %}
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q_{{ q.id }}" value="a" required> A) {{ q.opts[0] }}</label>
+                    <label class="option-label"><input type="radio" name="q_{{ q.id }}" value="b" required> B) {{ q.opts[1] }}</label>
+                    <label class="option-label"><input type="radio" name="q_{{ q.id }}" value="c" required> C) {{ q.opts[2] }}</label>
+                    <label class="option-label"><input type="radio" name="q_{{ q.id }}" value="d" required> D) {{ q.opts[3] }}</label>
+                </div>
+                {% else %}
+                <textarea name="q_{{ q.id }}" class="glass-input" rows="4" placeholder="Type your answer here..." style="width:100%; padding:15px; box-sizing:border-box;" required></textarea>
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+            <button type="submit" class="premium-btn" style="width: 100%; padding: 15px; font-size: 16px; margin-top:20px;">Submit Quiz Now</button>
+        </form>
+    </div>
+
+    <script>
+        let timeLeft = parseInt('{{ time_left }}');
+        const display = document.getElementById('countdown-display');
+        const form = document.getElementById('quiz-form');
+
+        function updateTimer() {
+            if (timeLeft <= 0) {
+                display.innerText = "00:00:00";
+                display.style.color = "#dc2626";
+                document.querySelector('.timer-bar').style.borderColor = "#dc2626";
+                clearInterval(timerInterval);
+                
+                // Circumvent the HTML5 'required' validation popup when forcing a hidden automated POST
+                form.noValidate = true; 
+                form.submit();
+                return;
+            }
+
+            const h = Math.floor(timeLeft / 3600).toString().padStart(2, '0');
+            const m = Math.floor((timeLeft % 3600) / 60).toString().padStart(2, '0');
+            const s = (timeLeft % 60).toString().padStart(2, '0');
+            display.innerText = `${h}:${m}:${s}`;
+            timeLeft--;
+        }
+
+        updateTimer();
+        const timerInterval = setInterval(updateTimer, 1000);
+        
+        // --- PROCTORING ENGINE ---
+        let cheatStrikes = 0;
+        let proctorActive = true;
+        
+        function showWarningModal() {
+            const modal = document.createElement("div");
+            modal.className = "cheat-modal";
+            modal.innerHTML = `
+                <div class="cheat-box">
+                    <h2 style="color:#ef4444; margin-top:0; font-size:24px;">⚠️ INTEGRITY WARNING ⚠️</h2>
+                    <p style="color:#d1d5db; font-size: 15px; line-height:1.6;">You have left the examination window. This strict academic portal tracks split-screens, clicking outside the browser, and tab switching to prevent cheating.</p>
+                    <p style="color:#FFF; font-weight:bold; margin-top:20px; font-size:16px;">If you lose focus again, your exam will be permanently terminated and you will receive a 0.</p>
+                    <button id="ack-btn" class="premium-btn" style="margin-top: 30px; background: rgba(239, 68, 68, 0.2); color: #FFF; border-color: #ef4444; font-size:15px; padding:12px 24px;">I Understand - Return to Exam</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.getElementById('ack-btn').onclick = () => {
+                document.body.removeChild(modal);
+                // Minor timeout to prevent an accidental double-bounce when they click the button to refocus the window
+                setTimeout(() => { proctorActive = true; }, 500); 
+            };
+        }
+
+        function triggerViolation() {
+            if (!proctorActive) return; // Prevent double-firing from simultaneous blur & visibility events
+            proctorActive = false;
+            cheatStrikes++;
+            
+            if (cheatStrikes === 1) {
+                showWarningModal();
+            } else {
+                // 2ND STRIKE: Instantly rip the form and throw them out
+                document.getElementById('cheating_flag').value = "true";
+                form.noValidate = true;
+                form.submit();
+            }
+        }
+
+        window.addEventListener('blur', triggerViolation);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) triggerViolation();
+        });
+        
+    </script>
+</body>
+</html>

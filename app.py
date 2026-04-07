@@ -3,8 +3,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from authlib.integrations.flask_client import OAuth
+from werkzeug.utils import secure_filename
 
 # Load environment variables from .env file
 try:
@@ -15,6 +16,9 @@ except ImportError:
 
 app = Flask(__name__)
 app.secret_key = "secret123"
+app.permanent_session_lifetime = timedelta(days=30)
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB max-limit
 
 # -------- OAUTH CONFIGURATION --------
 oauth = OAuth(app)
@@ -62,11 +66,14 @@ def init_db():
         )
     ''')
 
-    # Add password column dynamically if missing
+    # Add password and profile_pic columns dynamically if missing
     cursor.execute("PRAGMA table_info(students)")
     columns = [info[1] for info in cursor.fetchall()]
     if 'password' not in columns:
-        cursor.execute("ALTER TABLE students ADD COLUMN password TEXT DEFAULT 'student123'")
+        default_student_pwd = os.getenv('DEFAULT_STUDENT_PASSWORD', 'student123')
+        cursor.execute(f"ALTER TABLE students ADD COLUMN password TEXT DEFAULT '{default_student_pwd}'")
+    if 'profile_pic' not in columns:
+        cursor.execute("ALTER TABLE students ADD COLUMN profile_pic TEXT DEFAULT ''")
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS attendance (
@@ -100,6 +107,68 @@ def init_db():
             FOREIGN KEY(student_id) REFERENCES students(id)
         )
     ''')
+    
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS documents (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            student_id INTEGER NULL,
+            uploader_role TEXT,
+            title TEXT,
+            file_path TEXT,
+            file_type TEXT,
+            uploaded_at TEXT,
+            assignment_task_id INTEGER NULL
+        )
+    ''')
+
+    cursor.execute("PRAGMA table_info(documents)")
+    doc_cols = [info[1] for info in cursor.fetchall()]
+    if 'assignment_task_id' not in doc_cols:
+        cursor.execute("ALTER TABLE documents ADD COLUMN assignment_task_id INTEGER NULL")
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS assignment_tasks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            description TEXT,
+            due_date TEXT,
+            created_at TEXT
+        )
+    ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS quizzes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            due_date TEXT,
+            duration_minutes INTEGER,
+            questions_json TEXT,
+            created_at TEXT
+        )
+    ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS quiz_attempts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            quiz_id INTEGER,
+            student_id INTEGER,
+            start_time TEXT,
+            submit_time TEXT,
+            answers_json TEXT,
+            score REAL,
+            UNIQUE(quiz_id, student_id)
+        )
+    ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS live_classes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            meet_code TEXT,
+            host_id TEXT,
+            created_at TEXT
+        )
+    ''')
 
     # admin table
     cursor.execute('''
@@ -126,10 +195,12 @@ def init_db():
     ''')
 
     # default admin
-    cursor.execute("SELECT * FROM admin WHERE username='administrator'")
+    admin_user = os.getenv('ADMIN_USERNAME', 'admin')
+    cursor.execute("SELECT * FROM admin WHERE username=?", (admin_user,))
     if not cursor.fetchone():
-        hashed = generate_password_hash('EduSync@Admin2026')
-        cursor.execute("INSERT INTO admin (username, password) VALUES (?, ?)", ("administrator", hashed))
+        admin_pass = os.getenv('ADMIN_PASSWORD', 'admin123')
+        hashed = generate_password_hash(admin_pass)
+        cursor.execute("INSERT INTO admin (username, password) VALUES (?, ?)", (admin_user, hashed))
 
     conn.commit()
     conn.close()
@@ -142,6 +213,9 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        remember = request.form.get('remember')
+
+        session.permanent = bool(remember)
 
         conn = sqlite3.connect('students.db')
         cursor = conn.cursor()
@@ -219,6 +293,19 @@ def authorize_google():
             else:
                 oauth_user_id, user_type = oauth_user
             
+            # Link to student profile
+            if user_type == 'student':
+                cursor.execute("SELECT id FROM students WHERE email=?", (email,))
+                student_record = cursor.fetchone()
+                if student_record:
+                    session['student_id'] = student_record[0]
+                else:
+                    # Create a blank student profile for the new OAuth user
+                    student_pwd_hash = generate_password_hash('oauth_login_only')
+                    cursor.execute("INSERT INTO students (name, email, roll, password) VALUES (?, ?, ?, ?)", (name, email, f"OAUTH-{str(provider_id)[:6]}", student_pwd_hash))
+                    conn.commit()
+                    session['student_id'] = cursor.lastrowid
+            
             conn.close()
             
             # Set session
@@ -274,6 +361,19 @@ def authorize_microsoft():
             else:
                 oauth_user_id, user_type = oauth_user
             
+            # Link to student profile
+            if user_type == 'student':
+                cursor.execute("SELECT id FROM students WHERE email=?", (email,))
+                student_record = cursor.fetchone()
+                if student_record:
+                    session['student_id'] = student_record[0]
+                else:
+                    # Create a blank student profile for the new OAuth user
+                    student_pwd_hash = generate_password_hash('oauth_login_only')
+                    cursor.execute("INSERT INTO students (name, email, roll, password) VALUES (?, ?, ?, ?)", (name, email, f"OAUTH-{str(provider_id)[:6]}", student_pwd_hash))
+                    conn.commit()
+                    session['student_id'] = cursor.lastrowid
+
             conn.close()
             
             # Set session
@@ -293,6 +393,42 @@ def authorize_microsoft():
         return redirect(url_for('login'))
 
 # -------- END OAUTH ROUTES --------
+
+def generate_notifications(student_id=None):
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT title, due_date FROM assignment_tasks")
+    tasks = cursor.fetchall()
+    cursor.execute("SELECT title, due_date FROM quizzes")
+    quizzes = cursor.fetchall()
+    cursor.execute("SELECT title, meet_code FROM live_classes")
+    live_classes = cursor.fetchall()
+    conn.close()
+    
+    alerts = []
+    
+    for cls in live_classes:
+        alerts.append({"type": "urgent", "msg": f"🔴 LIVE NOW: '{cls[0]}' Video Class is active! Join in 'Study Materials'."})
+        
+    now_date = datetime.now().date()
+    tmrw_date = now_date + timedelta(days=1)
+    
+    def process_items(items, label):
+        for item in items:
+            title, due_str = item[0], item[1]
+            try: due_dt = datetime.fromisoformat(due_str).date()
+            except ValueError:
+                try: due_dt = datetime.strptime(due_str, "%Y-%m-%dT%H:%M").date()
+                except: continue
+                
+            if due_dt == now_date:
+                alerts.append({"type": "urgent", "msg": f"URGENT: {label} '{title}' is due TODAY!"})
+            elif due_dt == tmrw_date:
+                alerts.append({"type": "warning", "msg": f"Reminder: {label} '{title}' is due TOMORROW."})
+                
+    process_items(tasks, "Assignment")
+    process_items(quizzes, "Live Quiz")
+    return alerts
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -351,7 +487,8 @@ def home():
             gpa = 0
 
         courses_json = json.dumps(courses)
-        student_pwd_hash = generate_password_hash('student123')
+        default_student_pwd = os.getenv('DEFAULT_STUDENT_PASSWORD', 'student123')
+        student_pwd_hash = generate_password_hash(default_student_pwd)
 
         cursor.execute('''
             INSERT INTO students
@@ -383,9 +520,31 @@ def home():
     students_raw = cursor.fetchall()
 
     students = []
+    total_gpa = 0
+    valid_gpa_count = 0
+    total_attendance = 0
+    valid_attendance_count = 0
+
     for s in students_raw:
         courses = json.loads(s[14]) if s[14] else []
         students.append((s, courses))
+        
+        # Calculate GPA Average
+        if s[10] is not None and float(s[10]) > 0:
+            total_gpa += float(s[10])
+            valid_gpa_count += 1
+            
+        # Calculate Attendance Average
+        if s[11] is not None and str(s[11]).strip() != '':
+            try:
+                total_attendance += float(s[11])
+                valid_attendance_count += 1
+            except ValueError:
+                pass
+                
+    avg_gpa = round(total_gpa / valid_gpa_count, 1) if valid_gpa_count > 0 else 0.0
+    avg_attendance = round(total_attendance / valid_attendance_count, 1) if valid_attendance_count > 0 else 0.0
+    total_students = len(students)
 
     # Handle Edit View Toggle Data
     edit_id = request.args.get('edit_id')
@@ -397,8 +556,19 @@ def home():
         if edit_student:
             edit_courses = json.loads(edit_student[14]) if edit_student[14] else []
 
+    # Fetch all global study materials
+    cursor.execute("SELECT * FROM documents WHERE student_id IS NULL ORDER BY uploaded_at DESC")
+    global_docs = cursor.fetchall()
+    
+    # Get all assignment tasks
+    cursor.execute("SELECT * FROM assignment_tasks ORDER BY due_date ASC")
+    assignment_tasks = cursor.fetchall()
+    
+    cursor.execute("SELECT * FROM live_classes ORDER BY created_at DESC")
+    active_classes = cursor.fetchall()
+
     conn.close()
-    return render_template('index.html', students=students, edit_student=edit_student, edit_courses=edit_courses, search=search, sort=sort)
+    return render_template('index.html', students=students, edit_student=edit_student, edit_courses=edit_courses, search=search, sort=sort, avg_gpa=avg_gpa, avg_attendance=avg_attendance, total_students=total_students, global_docs=global_docs, assignment_tasks=assignment_tasks, active_classes=active_classes)
 
 
 # ---------------- STUDENT PORTAL ----------------
@@ -423,8 +593,60 @@ def student_dashboard():
     cursor.execute("SELECT * FROM transactions WHERE student_id=? ORDER BY date DESC", (student_id,))
     txs = cursor.fetchall()
     
+    # Get private assignments
+    cursor.execute("SELECT * FROM documents WHERE student_id=? AND file_type='Assignment Submission' ORDER BY uploaded_at DESC", (student_id,))
+    assignments = cursor.fetchall()
+    
+    # Fetch all global study materials
+    cursor.execute("SELECT * FROM documents WHERE student_id IS NULL AND file_type != 'Assignment Submission' ORDER BY uploaded_at DESC")
+    study_materials = cursor.fetchall()
+    
+    # Fetch all tasks from teachers
+    cursor.execute("SELECT * FROM assignment_tasks ORDER BY due_date ASC")
+    all_tasks = cursor.fetchall()
+    
+    # Fetch quizzes
+    cursor.execute('''
+        SELECT q.id, q.title, q.due_date, q.duration_minutes, a.start_time, a.submit_time, a.score
+        FROM quizzes q
+        LEFT JOIN quiz_attempts a ON q.id = a.quiz_id AND a.student_id = ?
+        ORDER BY q.due_date ASC
+    ''', (student_id,))
+    active_quizzes = cursor.fetchall()
+    
+    # Fetch live classes
+    cursor.execute("SELECT * FROM live_classes ORDER BY created_at DESC")
+    live_classes = cursor.fetchall()
+    
+    alerts = generate_notifications(student_id)
+    
+    # Structure task status
+    task_dashboard = []
+    from datetime import datetime as dt
+    now = dt.now()
+    for t in all_tasks:
+        try:
+            due_dt = dt.fromisoformat(t[3])
+        except ValueError:
+            due_dt = dt.strptime(t[3], "%Y-%m-%dT%H:%M") # fallback
+            
+        locked = now > due_dt
+        
+        cursor.execute("SELECT COUNT(*) FROM documents WHERE student_id=? AND assignment_task_id=?", (student_id, t[0]))
+        attempts = cursor.fetchone()[0]
+        
+        task_dashboard.append({
+            "id": t[0],
+            "title": t[1],
+            "desc": t[2],
+            "due": t[3].replace("T", " "),
+            "locked": locked,
+            "attempts": attempts,
+            "can_submit": (not locked) and (attempts < 2)
+        })
+        
     conn.close()
-    return render_template('student_portal.html', student=student, courses=courses, fee_record=fee_record, transactions=txs)
+    return render_template('student_portal.html', student=student, courses=courses, fee_record=fee_record, transactions=txs, assignments=assignments, study_materials=study_materials, task_dashboard=task_dashboard, active_quizzes=active_quizzes, notifications=alerts, live_classes=live_classes)
 
 
 # ---------------- DELETE AND EDIT ----------------
@@ -674,6 +896,356 @@ def export():
     return Response(generate(),
                     mimetype="text/csv",
                     headers={"Content-Disposition": "attachment;filename=students.csv"})
+
+# ---------------- FILE UPLOAD HANDLERS ----------------
+@app.route('/upload_profile_pic', methods=['POST'])
+def upload_profile_pic():
+    if 'user' not in session: return redirect(url_for('login'))
+    if 'photo' not in request.files: return "No photo provided", 400
+    
+    file = request.files['photo']
+    if file.filename == '': return "Empty filename", 400
+    
+    student_id = session.get('student_id')
+    if not student_id: return "Admin cannot upload their own pic here", 403
+    
+    import time
+    filename = f"{student_id}_{int(time.time())}_{secure_filename(file.filename)}"
+    os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], 'profiles'), exist_ok=True)
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'profiles', filename)
+    file.save(filepath)
+    
+    db_path = f"uploads/profiles/{filename}"
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("UPDATE students SET profile_pic=? WHERE id=?", (db_path, student_id))
+    conn.commit()
+    conn.close()
+    
+    return redirect(url_for('student_dashboard'))
+    
+@app.route('/upload_document', methods=['POST'])
+def upload_document():
+    if 'user' not in session: return redirect(url_for('login'))
+    
+    title = request.form.get('title', 'Untitled Document')
+    file_type = request.form.get('file_type', 'unknown') 
+    is_global = request.form.get('is_global', 'false') == 'true'
+    task_id = request.form.get('task_id', None)
+    
+    if 'document' not in request.files: return "No file element found", 400
+    file = request.files['document']
+    if file.filename == '': return "Empty filename", 400
+    
+    role = session.get('role')
+    student_id = session.get('student_id') if role == 'student' else None
+    
+    if is_global and role != 'admin':
+        return "Only authorized admins can upload global study materials.", 403
+        
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+        
+    # --- TIME-LOCK AND ATTEMPT VALIDATION ENGINE ---
+    if task_id and role == 'student':
+        cursor.execute("SELECT due_date FROM assignment_tasks WHERE id=?", (task_id,))
+        task_info = cursor.fetchone()
+        if not task_info:
+            conn.close()
+            return "Task not found", 404
+            
+        due_date_str = task_info[0]
+        from datetime import datetime as dt
+        try:
+            due_datetime = dt.fromisoformat(due_date_str)
+        except ValueError:
+            due_datetime = dt.strptime(due_date_str, "%Y-%m-%dT%H:%M")
+            
+        if dt.now() > due_datetime:
+            conn.close()
+            return "Deadline has strictly bypassed. System rejected the file drop.", 403
+            
+        cursor.execute("SELECT COUNT(*) FROM documents WHERE student_id=? AND assignment_task_id=?", (student_id, task_id))
+        attempts = cursor.fetchone()[0]
+        if attempts >= 2:
+            conn.close()
+            return "Maximum allowed attempts (2) exhausted. Access locked.", 403
+    # -----------------------------------------------
+
+    path_dir = 'study_materials' if is_global else 'assignments'
+    import time
+    filename = f"{int(time.time())}_{secure_filename(file.filename)}"
+    os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], 'documents', path_dir), exist_ok=True)
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'documents', path_dir, filename)
+    file.save(filepath)
+    
+    db_path = f"uploads/documents/{path_dir}/{filename}"
+    date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    cursor.execute('''
+        INSERT INTO documents (student_id, uploader_role, title, file_path, file_type, uploaded_at, assignment_task_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', (student_id, role, title, db_path, file_type, date_str, task_id))
+    conn.commit()
+    conn.close()
+    
+    if role == 'admin':
+        return redirect(url_for('home'))
+        
+    return redirect(url_for('student_dashboard'))
+    
+@app.route('/create_assignment_task', methods=['POST'])
+def create_assignment_task():
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    
+    title = request.form.get('title')
+    description = request.form.get('description', '')
+    due_date = request.form.get('due_date') # HTML5 datetime-local string
+    
+    if not title or not due_date: return "Missing fields", 400
+    
+    date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO assignment_tasks (title, description, due_date, created_at)
+        VALUES (?, ?, ?, ?)
+    ''', (title, description, due_date, date_str))
+    conn.commit()
+    conn.close()
+    
+    return redirect(url_for('home'))
+
+@app.route('/extend_deadline/<int:task_id>', methods=['POST'])
+def extend_deadline(task_id):
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    
+    new_due_date = request.form.get('due_date')
+    if not new_due_date: return "Missing deadline", 400
+    
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("UPDATE assignment_tasks SET due_date=? WHERE id=?", (new_due_date, task_id))
+    conn.commit()
+    conn.close()
+    
+    return redirect(url_for('home'))
+
+@app.route('/create_custom_quiz', methods=['POST'])
+def create_custom_quiz():
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    
+    title = request.form.get('title', 'Untitled Quiz')
+    due_date = request.form.get('due_date')
+    duration = int(request.form.get('duration_minutes', 15))
+    q_count = int(request.form.get('question_count', 0))
+    
+    questions = []
+    import json
+    for i in range(1, q_count + 1):
+        q_text = request.form.get(f'q_{i}_text')
+        if not q_text: continue
+        q_type = request.form.get(f'q_{i}_type', 'text')
+        marks = float(request.form.get(f'q_{i}_marks', 1))
+        
+        q_obj = {"id": i, "text": q_text, "type": q_type, "marks": marks}
+        if q_type == 'mcq':
+            q_obj["opts"] = [
+                request.form.get(f'q_{i}_A', ''),
+                request.form.get(f'q_{i}_B', ''),
+                request.form.get(f'q_{i}_C', ''),
+                request.form.get(f'q_{i}_D', '')
+            ]
+            q_obj["ans"] = request.form.get(f'q_{i}_ans', 'a')
+        questions.append(q_obj)
+        
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO quizzes (title, due_date, duration_minutes, questions_json, created_at)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (title, due_date, duration, json.dumps(questions), datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('home'))
+
+# ---------------- QUIZ HANDLERS ----------------
+@app.route('/start_quiz/<int:quiz_id>', methods=['POST'])
+def start_quiz(quiz_id):
+    if session.get('role') != 'student': return redirect(url_for('login'))
+    student_id = session['student_id']
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM quiz_attempts WHERE quiz_id=? AND student_id=?", (quiz_id, student_id))
+    attempt = cursor.fetchone()
+    if attempt:
+        conn.close()
+        return redirect(url_for('take_quiz', quiz_id=quiz_id))
+        
+    start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    cursor.execute("INSERT INTO quiz_attempts (quiz_id, student_id, start_time) VALUES (?, ?, ?)", (quiz_id, student_id, start_time))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('take_quiz', quiz_id=quiz_id))
+
+@app.route('/take_quiz/<int:quiz_id>')
+def take_quiz(quiz_id):
+    if session.get('role') != 'student': return redirect(url_for('login'))
+    student_id = session['student_id']
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM quizzes WHERE id=?", (quiz_id,))
+    quiz = cursor.fetchone()
+    
+    cursor.execute("SELECT start_time, submit_time FROM quiz_attempts WHERE quiz_id=? AND student_id=?", (quiz_id, student_id))
+    attempt = cursor.fetchone()
+    conn.close()
+    
+    if not quiz or not attempt: return "Invalid access", 400
+    if attempt[1]: return redirect(url_for('student_dashboard')) # Already submitted
+    
+    start_dt = datetime.strptime(attempt[0], "%Y-%m-%d %H:%M:%S")
+    duration = timedelta(minutes=quiz[3])
+    expire_dt = start_dt + duration
+    time_left_seconds = (expire_dt - datetime.now()).total_seconds()
+    
+    if time_left_seconds <= -5: # strict 5s backend lock
+        # Force arbitrary empty submission since they timed out server-side
+        return redirect(url_for('force_submit_quiz', quiz_id=quiz_id))
+        
+    raw_qs = json.loads(quiz[4])
+    return render_template('take_quiz.html', quiz=quiz, questions=raw_qs, time_left=int(time_left_seconds))
+
+@app.route('/submit_quiz/<int:quiz_id>', methods=['POST', 'GET'])
+def submit_quiz(quiz_id):
+    if session.get('role') != 'student': return redirect(url_for('login'))
+    student_id = session['student_id']
+    
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM quizzes WHERE id=?", (quiz_id,))
+    quiz = cursor.fetchone()
+    cursor.execute("SELECT start_time, submit_time FROM quiz_attempts WHERE quiz_id=? AND student_id=?", (quiz_id, student_id))
+    attempt = cursor.fetchone()
+    
+    if not quiz or not attempt or attempt[1]: 
+        conn.close()
+        return redirect(url_for('student_dashboard'))
+        
+    start_dt = datetime.strptime(attempt[0], "%Y-%m-%d %H:%M:%S")
+    duration = timedelta(minutes=quiz[3])
+    expire_dt = start_dt + duration
+    
+    cheating_flag = request.form.get('cheating_flag') == "true"
+    
+    # Network grace period 5 seconds
+    if datetime.now() > expire_dt + timedelta(seconds=5) or cheating_flag:
+        # Even though JS forces, if someone bypassed, we reject answers, score 0
+        answers = {"violation_flag": "Exam forcefully terminated due to zero-tolerance cheating violation or latency timeout."}
+        score = 0.0
+    else:
+        # Evaluate provided answers based on dynamic marks
+        raw_qs = json.loads(quiz[4])
+        answers = {}
+        earned = 0.0
+        total_possible = 0.0
+        
+        for q in raw_qs:
+            q_id = str(q['id'])
+            user_ans = request.form.get('q_' + q_id, '').strip()
+            answers[q_id] = user_ans
+            q_points = float(q.get('marks', 1))
+            total_possible += q_points
+            
+            if q['type'] == 'mcq' and user_ans.lower() == q.get('ans', '').lower():
+                earned += q_points
+            # Written answers manually graded later
+            
+        score = (earned / total_possible) * 100 if total_possible > 0 else 0
+
+    submit_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    cursor.execute("UPDATE quiz_attempts SET submit_time=?, answers_json=?, score=? WHERE quiz_id=? AND student_id=?", 
+                   (submit_time, json.dumps(answers), score, quiz_id, student_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('student_dashboard'))
+    
+@app.route('/force_submit_quiz/<int:quiz_id>')
+def force_submit_quiz(quiz_id):
+    # A dummy endpoint to execute a blank zero-graded fallback if they drastically missed the time
+    return submit_quiz(quiz_id)
+
+# ---------------- LIVE CLASS HANDLERS ----------------
+@app.route('/create_live_class', methods=['POST'])
+def create_live_class():
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    title = request.form.get('title', 'Online Class')
+    # Generate unique 9 character meet code e.g. "edu-abcd-xyz"
+    import random, string
+    code = f"edu-{''.join(random.choices(string.ascii_lowercase, k=4))}-{''.join(random.choices(string.ascii_lowercase, k=4))}"
+    
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO live_classes (title, meet_code, host_id, created_at) VALUES (?, ?, ?, ?)", 
+                   (title, code, 'admin', datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('home'))
+
+@app.route('/end_live_class/<int:class_id>')
+def end_live_class(class_id):
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM live_classes WHERE id=?", (class_id,))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('home'))
+
+@app.route('/join_class/<meet_code>')
+def join_class(meet_code):
+    if 'user' not in session: return redirect(url_for('login'))
+    role = session.get('role')
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT title FROM live_classes WHERE meet_code=?", (meet_code,))
+    class_info = cursor.fetchone()
+    conn.close()
+    
+    if not class_info: return "Class ended or does not exist. The host may have terminated it.", 404
+    
+    # Pass user contextual data to UI
+    display_name = ''
+    if role == 'student':
+        # Grab actual student name
+        conn = sqlite3.connect('students.db')
+        c = conn.cursor()
+        c.execute("SELECT name FROM students WHERE id=?", (session['student_id'],))
+        std = c.fetchone()
+        display_name = std[0] if std else 'Guest Student'
+        conn.close()
+    else:
+        display_name = 'Admin (Host)'
+        
+    return render_template('live_class.html', meet_code=meet_code, title=class_info[0], display_name=display_name, role=role)
+
+@app.route('/delete_document/<int:doc_id>')
+def delete_document(doc_id):
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT file_path FROM documents WHERE id=?", (doc_id,))
+    doc = cursor.fetchone()
+    if doc:
+        try:
+            os.remove(os.path.join('static', doc[0]))
+        except Exception as e:
+            pass
+        cursor.execute("DELETE FROM documents WHERE id=?", (doc_id,))
+        conn.commit()
+    conn.close()
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)

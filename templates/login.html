@@ -204,6 +204,26 @@
                 <h1 class="welcome-text">Welcome back</h1>
                 <p class="sub-text">Please enter your credentials to securely access your account.</p>
 
+                <form method="POST" action="/login">
+                    <div class="input-group">
+                        <label>Username / Roll Number</label>
+                        <input type="text" name="username" required class="glass-input"
+                            placeholder="Enter your username or roll number">
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required class="glass-input" placeholder="••••••••">
+                    </div>
+                    <div class="input-group" style="flex-direction: row; align-items: center; gap: 8px;">
+                        <input type="checkbox" name="remember" id="remember" style="width: auto; cursor: pointer;">
+                        <label for="remember" style="margin-bottom: 0; cursor: pointer; color: #9ca3af; font-size: 14px;">Stay logged in</label>
+                    </div>
+
+                    <button type="submit" class="premium-btn" style="margin-top: 10px;">Sign In to Dashboard</button>
+                </form>
+
+                <div class="divider">or continue with</div>
+
                 <div class="oauth-buttons">
                     <a href="/login/google" class="oauth-btn google-btn">
                         <svg class="oauth-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -222,28 +242,11 @@
                     </a>
                 </div>
 
-                <div class="divider">or continue with email</div>
-
-                <form method="POST" action="/login">
-                    <div class="input-group">
-                        <label>Username / Roll Number</label>
-                        <input type="text" name="username" required class="glass-input"
-                            placeholder="e.g. administrator or 21CS01">
-                    </div>
-                    <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" name="password" required class="glass-input" placeholder="••••••••">
-                    </div>
-
-                    <button type="submit" class="premium-btn">Sign In to Dashboard</button>
-                </form>
-
                 <div class="role-hint">
-                    <strong style="color: #b0a8fe;">Administrators:</strong> Log in with your standard admin
+                    <strong style="color: #b0a8fe;">Administrators:</strong> Log in with your assigned admin
                     credentials.<br><br>
                     <strong style="color: #64ffda;">Students:</strong> Log in using your specific assigned
-                    <code>Roll Number</code> as the username. If this is your first time logging in, your default
-                    password is <code>student123</code>.
+                    <code>Roll Number</code> as the username. Please use your initial default password provided by your institution.
                 </div>
             </div>
         </div>
