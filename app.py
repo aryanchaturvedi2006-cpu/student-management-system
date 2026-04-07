@@ -4,9 +4,38 @@ import sqlite3
 import json
 import os
 from datetime import datetime
+from authlib.integrations.flask_client import OAuth
+
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # python-dotenv not installed, use system env vars
 
 app = Flask(__name__)
 app.secret_key = "secret123"
+
+# -------- OAUTH CONFIGURATION --------
+oauth = OAuth(app)
+
+# Configure Google OAuth
+google = oauth.register(
+    name='google',
+    client_id=os.getenv('GOOGLE_CLIENT_ID', ''),
+    client_secret=os.getenv('GOOGLE_CLIENT_SECRET', ''),
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_kwargs={'scope': 'openid email profile'}
+)
+
+# Configure Microsoft OAuth
+microsoft = oauth.register(
+    name='microsoft',
+    client_id=os.getenv('MICROSOFT_CLIENT_ID', ''),
+    client_secret=os.getenv('MICROSOFT_CLIENT_SECRET', ''),
+    server_metadata_url='https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
+    client_kwargs={'scope': 'openid email profile'}
+)
 
 # ---------------- DATABASE ----------------
 def init_db():
@@ -81,11 +110,26 @@ def init_db():
         )
     ''')
 
+    # oauth_users table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS oauth_users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            provider TEXT,
+            provider_id TEXT,
+            email TEXT,
+            name TEXT,
+            profile_pic TEXT,
+            user_type TEXT,
+            created_at TEXT,
+            UNIQUE(provider, provider_id)
+        )
+    ''')
+
     # default admin
-    cursor.execute("SELECT * FROM admin WHERE username='admin'")
+    cursor.execute("SELECT * FROM admin WHERE username='administrator'")
     if not cursor.fetchone():
-        hashed = generate_password_hash('admin123')
-        cursor.execute("INSERT INTO admin (username, password) VALUES (?, ?)", ("admin", hashed))
+        hashed = generate_password_hash('EduSync@Admin2026')
+        cursor.execute("INSERT INTO admin (username, password) VALUES (?, ?)", ("administrator", hashed))
 
     conn.commit()
     conn.close()
@@ -137,7 +181,119 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
-# ---------------- ADMIN ADMIN ----------------
+# -------- OAUTH ROUTES --------
+@app.route('/login/google')
+def login_google():
+    redirect_uri = url_for('authorize_google', _external=True)
+    return google.authorize_redirect(redirect_uri)
+
+@app.route('/authorize/google')
+def authorize_google():
+    try:
+        token = google.authorize_access_token()
+        user_info = token.get('userinfo')
+        
+        if user_info:
+            email = user_info.get('email')
+            name = user_info.get('name', email.split('@')[0])
+            picture = user_info.get('picture', '')
+            provider_id = user_info.get('sub')
+            
+            conn = sqlite3.connect('students.db')
+            cursor = conn.cursor()
+            
+            # Check if user exists
+            cursor.execute("SELECT id, user_type FROM oauth_users WHERE provider=? AND provider_id=?", ('google', provider_id))
+            oauth_user = cursor.fetchone()
+            
+            if not oauth_user:
+                # Create new OAuth user
+                created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                cursor.execute('''
+                    INSERT INTO oauth_users (provider, provider_id, email, name, profile_pic, user_type, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', ('google', provider_id, email, name, picture, 'student', created_at))
+                conn.commit()
+                user_type = 'student'
+                oauth_user_id = cursor.lastrowid
+            else:
+                oauth_user_id, user_type = oauth_user
+            
+            conn.close()
+            
+            # Set session
+            session['user'] = name
+            session['email'] = email
+            session['oauth_user_id'] = oauth_user_id
+            session['role'] = user_type
+            session['oauth_provider'] = 'google'
+            
+            # Redirect based on user type
+            if user_type == 'admin':
+                return redirect(url_for('home'))
+            else:
+                return redirect(url_for('student_dashboard'))
+    except Exception as e:
+        print(f"OAuth error: {e}")
+        return redirect(url_for('login'))
+
+@app.route('/login/microsoft')
+def login_microsoft():
+    redirect_uri = url_for('authorize_microsoft', _external=True)
+    return microsoft.authorize_redirect(redirect_uri)
+
+@app.route('/authorize/microsoft')
+def authorize_microsoft():
+    try:
+        token = microsoft.authorize_access_token()
+        user_info = token.get('userinfo')
+        
+        if user_info:
+            email = user_info.get('email')
+            name = user_info.get('name', email.split('@')[0])
+            picture = user_info.get('picture', '')
+            provider_id = user_info.get('id')
+            
+            conn = sqlite3.connect('students.db')
+            cursor = conn.cursor()
+            
+            # Check if user exists
+            cursor.execute("SELECT id, user_type FROM oauth_users WHERE provider=? AND provider_id=?", ('microsoft', provider_id))
+            oauth_user = oauth_user = cursor.fetchone()
+            
+            if not oauth_user:
+                # Create new OAuth user
+                created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                cursor.execute('''
+                    INSERT INTO oauth_users (provider, provider_id, email, name, profile_pic, user_type, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', ('microsoft', provider_id, email, name, picture, 'student', created_at))
+                conn.commit()
+                user_type = 'student'
+                oauth_user_id = cursor.lastrowid
+            else:
+                oauth_user_id, user_type = oauth_user
+            
+            conn.close()
+            
+            # Set session
+            session['user'] = name
+            session['email'] = email
+            session['oauth_user_id'] = oauth_user_id
+            session['role'] = user_type
+            session['oauth_provider'] = 'microsoft'
+            
+            # Redirect based on user type
+            if user_type == 'admin':
+                return redirect(url_for('home'))
+            else:
+                return redirect(url_for('student_dashboard'))
+    except Exception as e:
+        print(f"OAuth error: {e}")
+        return redirect(url_for('login'))
+
+# -------- END OAUTH ROUTES --------
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if 'user' not in session or session.get('role') != 'admin':
