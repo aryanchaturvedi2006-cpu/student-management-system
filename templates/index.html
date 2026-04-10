@@ -348,9 +348,17 @@
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Live Quizzes
                 </a>
+                <a href="#" class="nav-link" onclick="showTab('weekly-contest-tab', this)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Weekly Contest
+                </a>
                 <a href="#" class="nav-link" onclick="showTab('resources-tab', this)">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     Global Resources
+                </a>
+                <a href="#" class="nav-link" onclick="showTab('pyq-repo-tab', this)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    PYQ Repository
                 </a>
             </nav>
 
@@ -789,9 +797,13 @@
                                     <label>Strict Deadline (Date & Time)</label>
                                     <input type="datetime-local" name="due_date" required class="glass-input">
                                 </div>
-                                <div class="input-group" style="grid-column: span 2;">
+                                <div class="input-group">
                                     <label>Time Limit (Minutes)</label>
                                     <input type="number" name="duration_minutes" required min="1" max="180" class="glass-input" value="15">
+                                </div>
+                                <div class="input-group" style="display:flex; align-items:center; gap:10px; margin-top:25px;">
+                                    <input type="checkbox" name="is_contest" value="1" id="is_contest_check" style="width:20px; height:20px;">
+                                    <label for="is_contest_check" style="margin:0; color:#ffd700; font-weight:bold;">MARK AS WEEKLY CONTEST</label>
                                 </div>
                             </div>
                             <hr style="border-top:1px solid rgba(255,255,255,0.1); margin: 20px 0;">
@@ -808,6 +820,14 @@
                             <button type="submit" class="premium-btn" style="width: 100%; background: rgba(59, 130, 246, 0.2); color: #60a5fa; border-color: rgba(59, 130, 246, 0.4);">Lock & Deploy Live Quiz</button>
                         </form>
                     </div>
+
+                    <div class="glass-panel-dark" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: rgba(255,215,0,0.02); margin-top: 20px;">
+                        <h4 style="color: #ffd700; margin-top:0;">🏆 Contest Management</h4>
+                        <p style="font-size: 11px; color: #9ca3af; margin-bottom: 12px;">Finalize the last weekly contest to calculate rankings and award stars to participants.</p>
+                        <form method="POST" action="/admin/finalize_contest">
+                            <button type="submit" class="premium-btn" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border-color: rgba(255, 215, 0, 0.4); width: auto; padding: 8px 16px; font-size:12px;">Finalize Latest Contest & Award Stars</button>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- TAB 8: RESOURCES -->
@@ -820,15 +840,6 @@
                                 <label>Material Title</label>
                                 <input type="text" name="title" required class="glass-input" placeholder="e.g. Machine Learning Syllabus">
                             </div>
-                            <div class="input-group">
-                                <label>Resource Category</label>
-                                <select name="file_type" required class="glass-input">
-                                    <option value="Syllabus">Syllabus</option>
-                                    <option value="Presentation / PPT">Presentation / PPT</option>
-                                    <option value="Study Guide / PDF">Study Guide / PDF</option>
-                                    <option value="General Handout">General Handout</option>
-                                </select>
-                            </div>
                             <div class="input-group" style="margin-top:10px;">
                                 <label>Upload File (Any Format)</label>
                                 <input type="file" name="document" required class="glass-input" style="padding-top:10px;">
@@ -839,12 +850,7 @@
                     <div class="table-container glass-panel-dark">
                         <table class="premium-table">
                             <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>Date Uploaded</th>
-                                    <th>Actions</th>
-                                </tr>
+                                <tr><th>Title</th><th>Type</th><th>Date Uploaded</th><th>Actions</th></tr>
                             </thead>
                             <tbody>
                                 {% if global_docs %}
@@ -860,10 +866,76 @@
                                 </tr>
                                 {% endfor %}
                                 {% else %}
-                                <tr>
-                                    <td colspan="4" style="text-align:center; padding: 20px; color:#6b7280;">No materials shared globally yet.</td>
-                                </tr>
+                                <tr><td colspan="4" style="text-align:center; padding: 20px; color:#6b7280;">No materials shared globally yet.</td></tr>
                                 {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 8: PYQ REPOSITORY -->
+                <div id="pyq-repo-tab" class="tab-content">
+                    <div class="section-header">
+                        <h3>Manage Previous Year Papers (PYQs)</h3>
+                    </div>
+                    <div class="glass-panel-dark" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 40px;">
+                        <form method="POST" action="/upload_document" enctype="multipart/form-data" class="dashboard-form">
+                            <input type="hidden" name="is_pyq" value="true">
+                            <div class="input-group">
+                                <label>Paper Title</label>
+                                <input type="text" name="title" required class="glass-input" placeholder="e.g. 2023 Mathematics Semester 2">
+                            </div>
+                            <div class="input-group" style="margin-top:10px;">
+                                <label>Upload PDF / Document</label>
+                                <input type="file" name="document" required class="glass-input" style="padding-top:10px;">
+                            </div>
+                            <button type="submit" class="premium-btn" style="margin-top: 15px; background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border-color: rgba(139, 92, 246, 0.4);">Publish to PYQ Bank</button>
+                        </form>
+                    </div>
+
+                    <div class="table-container glass-panel-dark">
+                        <table class="premium-table">
+                            <thead><tr><th>Title</th><th>Date Uploaded</th><th>Actions</th></tr></thead>
+                            <tbody>
+                                {% if pyqs %}
+                                {% for doc in pyqs %}
+                                <tr>
+                                    <td><strong>{{ doc[3] }}</strong></td>
+                                    <td>{{ doc[6][:10] }}</td>
+                                    <td>
+                                        <a href="{{ url_for('static', filename=doc[4]) }}" target="_blank" class="premium-btn" style="padding: 6px 12px; font-size:12px; text-decoration:none;">View</a>
+                                        <a href="/delete_document/{{ doc[0] }}" onclick="return confirm('Delete this PYQ?');" class="btn-delete" style="padding: 6px 12px; font-size:12px; text-decoration:none; margin-left: 5px; color:#ef4444; background: rgba(239, 68, 68, 0.1); border-radius: 8px;">Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <tr><td colspan="3" style="text-align:center; padding: 20px; color:#6b7280;">No PYQs uploaded yet.</td></tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 9: WEEKLY CONTESTS -->
+                <div id="weekly-contest-tab" class="tab-content">
+                    <div class="section-header">
+                        <h3>Weekly Saturday Battle Management</h3>
+                    </div>
+                    
+                    <div class="glass-panel-dark" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: rgba(255,215,0,0.02); margin-bottom: 30px;">
+                        <h4 style="color: #ffd700; margin-top:0;">🏆 Finalize & Rank</h4>
+                        <p style="font-size: 11px; color: #9ca3af; margin-bottom: 12px;">Process scores and award individual rankings (Platinum/Gold/Silver) and Stars for the most recent Saturday contest.</p>
+                        <form method="POST" action="/admin/finalize_contest">
+                            <button type="submit" class="premium-btn" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border-color: rgba(255, 215, 0, 0.4); width: auto; padding: 10px 20px;">Finalize Latest Contest & Award Stars</button>
+                        </form>
+                    </div>
+
+                    <div class="table-container glass-panel-dark">
+                        <table class="premium-table">
+                            <thead><tr><th>Contest Component</th><th>Status</th></tr></thead>
+                            <tbody>
+                                <tr><td>Weekly Leaderboard</td><td style="color:#34d399;">Active</td></tr>
+                                <tr><td>Ranking Algorithm</td><td style="color:#34d399;">Ready</td></tr>
                             </tbody>
                         </table>
                     </div>

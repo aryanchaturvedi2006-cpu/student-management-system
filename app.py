@@ -60,9 +60,10 @@ def init_db():
             semester TEXT,
             gpa REAL,
             attendance TEXT,
-            extra_activities TEXT,
             sports_achievements TEXT,
-            courses TEXT
+            courses TEXT,
+            stars INTEGER DEFAULT 0,
+            contest_rank TEXT DEFAULT 'Unranked'
         )
     ''')
 
@@ -74,6 +75,10 @@ def init_db():
         cursor.execute(f"ALTER TABLE students ADD COLUMN password TEXT DEFAULT '{default_student_pwd}'")
     if 'profile_pic' not in columns:
         cursor.execute("ALTER TABLE students ADD COLUMN profile_pic TEXT DEFAULT ''")
+    if 'stars' not in columns:
+        cursor.execute("ALTER TABLE students ADD COLUMN stars INTEGER DEFAULT 0")
+    if 'contest_rank' not in columns:
+        cursor.execute("ALTER TABLE students ADD COLUMN contest_rank TEXT DEFAULT 'Unranked'")
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS attendance (
@@ -116,6 +121,7 @@ def init_db():
             title TEXT,
             file_path TEXT,
             file_type TEXT,
+            is_pyq INTEGER DEFAULT 0,
             uploaded_at TEXT,
             assignment_task_id INTEGER NULL
         )
@@ -125,6 +131,8 @@ def init_db():
     doc_cols = [info[1] for info in cursor.fetchall()]
     if 'assignment_task_id' not in doc_cols:
         cursor.execute("ALTER TABLE documents ADD COLUMN assignment_task_id INTEGER NULL")
+    if 'is_pyq' not in doc_cols:
+        cursor.execute("ALTER TABLE documents ADD COLUMN is_pyq INTEGER DEFAULT 0")
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS assignment_tasks (
@@ -143,9 +151,15 @@ def init_db():
             due_date TEXT,
             duration_minutes INTEGER,
             questions_json TEXT,
+            is_contest INTEGER DEFAULT 0,
             created_at TEXT
         )
     ''')
+
+    cursor.execute("PRAGMA table_info(quizzes)")
+    quiz_cols = [info[1] for info in cursor.fetchall()]
+    if 'is_contest' not in quiz_cols:
+        cursor.execute("ALTER TABLE quizzes ADD COLUMN is_contest INTEGER DEFAULT 0")
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS quiz_attempts (
@@ -556,9 +570,13 @@ def home():
         if edit_student:
             edit_courses = json.loads(edit_student[14]) if edit_student[14] else []
 
-    # Fetch all global study materials
-    cursor.execute("SELECT * FROM documents WHERE student_id IS NULL ORDER BY uploaded_at DESC")
+    # Fetch all global study materials (excluding PYQs)
+    cursor.execute("SELECT * FROM documents WHERE student_id IS NULL AND is_pyq=0 ORDER BY uploaded_at DESC")
     global_docs = cursor.fetchall()
+    
+    # Fetch all PYQs
+    cursor.execute("SELECT * FROM documents WHERE is_pyq=1 ORDER BY uploaded_at DESC")
+    pyqs = cursor.fetchall()
     
     # Get all assignment tasks
     cursor.execute("SELECT * FROM assignment_tasks ORDER BY due_date ASC")
@@ -568,7 +586,7 @@ def home():
     active_classes = cursor.fetchall()
 
     conn.close()
-    return render_template('index.html', students=students, edit_student=edit_student, edit_courses=edit_courses, search=search, sort=sort, avg_gpa=avg_gpa, avg_attendance=avg_attendance, total_students=total_students, global_docs=global_docs, assignment_tasks=assignment_tasks, active_classes=active_classes)
+    return render_template('index.html', students=students, edit_student=edit_student, edit_courses=edit_courses, search=search, sort=sort, avg_gpa=avg_gpa, avg_attendance=avg_attendance, total_students=total_students, global_docs=global_docs, pyqs=pyqs, assignment_tasks=assignment_tasks, active_classes=active_classes)
 
 
 # ---------------- STUDENT PORTAL ----------------
@@ -597,9 +615,13 @@ def student_dashboard():
     cursor.execute("SELECT * FROM documents WHERE student_id=? AND file_type='Assignment Submission' ORDER BY uploaded_at DESC", (student_id,))
     assignments = cursor.fetchall()
     
-    # Fetch all global study materials
-    cursor.execute("SELECT * FROM documents WHERE student_id IS NULL AND file_type != 'Assignment Submission' ORDER BY uploaded_at DESC")
+    # Fetch all global study materials (excluding PYQs)
+    cursor.execute("SELECT * FROM documents WHERE student_id IS NULL AND file_type != 'Assignment Submission' AND is_pyq=0 ORDER BY uploaded_at DESC")
     study_materials = cursor.fetchall()
+
+    # Fetch all PYQs
+    cursor.execute("SELECT * FROM documents WHERE is_pyq=1 ORDER BY uploaded_at DESC")
+    pyqs = cursor.fetchall()
     
     # Fetch all tasks from teachers
     cursor.execute("SELECT * FROM assignment_tasks ORDER BY due_date ASC")
@@ -646,7 +668,7 @@ def student_dashboard():
         })
         
     conn.close()
-    return render_template('student_portal.html', student=student, courses=courses, fee_record=fee_record, transactions=txs, assignments=assignments, study_materials=study_materials, task_dashboard=task_dashboard, active_quizzes=active_quizzes, notifications=alerts, live_classes=live_classes)
+    return render_template('student_portal.html', student=student, courses=courses, fee_record=fee_record, transactions=txs, assignments=assignments, study_materials=study_materials, pyqs=pyqs, task_dashboard=task_dashboard, active_quizzes=active_quizzes, notifications=alerts, live_classes=live_classes)
 
 
 # ---------------- DELETE AND EDIT ----------------
@@ -931,6 +953,7 @@ def upload_document():
     title = request.form.get('title', 'Untitled Document')
     file_type = request.form.get('file_type', 'unknown') 
     is_global = request.form.get('is_global', 'false') == 'true'
+    is_pyq = request.form.get('is_pyq', 'false') == 'true'
     task_id = request.form.get('task_id', None)
     
     if 'document' not in request.files: return "No file element found", 400
@@ -940,8 +963,8 @@ def upload_document():
     role = session.get('role')
     student_id = session.get('student_id') if role == 'student' else None
     
-    if is_global and role != 'admin':
-        return "Only authorized admins can upload global study materials.", 403
+    if (is_global or is_pyq) and role != 'admin':
+        return "Only authorized admins can upload global study materials or PYQs.", 403
         
     conn = sqlite3.connect('students.db')
     cursor = conn.cursor()
@@ -972,7 +995,7 @@ def upload_document():
             return "Maximum allowed attempts (2) exhausted. Access locked.", 403
     # -----------------------------------------------
 
-    path_dir = 'study_materials' if is_global else 'assignments'
+    path_dir = 'pyqs' if is_pyq else ('study_materials' if is_global else 'assignments')
     import time
     filename = f"{int(time.time())}_{secure_filename(file.filename)}"
     os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], 'documents', path_dir), exist_ok=True)
@@ -983,9 +1006,9 @@ def upload_document():
     date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     cursor.execute('''
-        INSERT INTO documents (student_id, uploader_role, title, file_path, file_type, uploaded_at, assignment_task_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    ''', (student_id, role, title, db_path, file_type, date_str, task_id))
+        INSERT INTO documents (student_id, uploader_role, title, file_path, file_type, is_pyq, uploaded_at, assignment_task_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (student_id, role, title, db_path, file_type, 1 if is_pyq else 0, date_str, task_id))
     conn.commit()
     conn.close()
     
@@ -1041,6 +1064,8 @@ def create_custom_quiz():
     duration = int(request.form.get('duration_minutes', 15))
     q_count = int(request.form.get('question_count', 0))
     
+    is_contest = 1 if request.form.get('is_contest') == '1' else 0
+    
     questions = []
     import json
     for i in range(1, q_count + 1):
@@ -1063,9 +1088,9 @@ def create_custom_quiz():
     conn = sqlite3.connect('students.db')
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO quizzes (title, due_date, duration_minutes, questions_json, created_at)
-        VALUES (?, ?, ?, ?, ?)
-    ''', (title, due_date, duration, json.dumps(questions), datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+        INSERT INTO quizzes (title, due_date, duration_minutes, questions_json, is_contest, created_at)
+        VALUES (?, ?, ?, ?, ?, ?)
+    ''', (title, due_date, duration, json.dumps(questions), is_contest, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
     conn.commit()
     conn.close()
     return redirect(url_for('home'))
@@ -1244,6 +1269,83 @@ def delete_document(doc_id):
             pass
         cursor.execute("DELETE FROM documents WHERE id=?", (doc_id,))
         conn.commit()
+    conn.close()
+    return redirect(url_for('home'))
+
+@app.route('/api/leaderboard')
+def get_leaderboard():
+    from flask import jsonify
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    # Fetch students and their contest performance
+    cursor.execute("""
+        SELECT s.id, s.name, s.stars, s.contest_rank, 
+               (SELECT SUM(score) FROM quiz_attempts qa JOIN quizzes q ON qa.quiz_id = q.id WHERE qa.student_id = s.id AND q.is_contest = 1) as contest_score
+        FROM students s
+        ORDER BY contest_score DESC, s.stars DESC
+    """)
+    rows = cursor.fetchall()
+    conn.close()
+    
+    leaderboard = []
+    for r in rows:
+        leaderboard.append({
+            "id": r[0],
+            "name": r[1],
+            "stars": r[2] or 0,
+            "rank": r[3] or 'Unranked',
+            "score": r[4] or 0
+        })
+    return jsonify(leaderboard)
+
+@app.route('/admin/finalize_contest', methods=['POST'])
+def finalize_contest():
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    
+    # Calculate performance for the LATEST contest
+    cursor.execute("SELECT id FROM quizzes WHERE is_contest = 1 ORDER BY created_at DESC LIMIT 1")
+    latest_contest = cursor.fetchone()
+    if not latest_contest:
+        conn.close()
+        return "No contest found", 404
+        
+    contest_id = latest_contest[0]
+    
+    # Get all attempts for this contest
+    cursor.execute("""
+        SELECT student_id, score, time_taken 
+        FROM quiz_attempts 
+        WHERE quiz_id = ? 
+        ORDER BY score DESC, time_taken ASC
+    """, (contest_id,))
+    attempts = cursor.fetchall()
+    
+    total_participants = len(attempts)
+    if total_participants == 0:
+        conn.close()
+        return "No participants to rank. Make sure pupils have submitted their contest entries.", 200
+        
+    for i, att in enumerate(attempts):
+        student_id = att[0]
+        rank_label = 'Participation'
+        star_reward = 1
+        
+        if i < max(1, int(0.1 * total_participants)):
+            rank_label = 'Platinum'
+            star_reward = 5
+        elif i < max(2, int(0.3 * total_participants)):
+            rank_label = 'Gold'
+            star_reward = 3
+        elif i < max(3, int(0.6 * total_participants)):
+            rank_label = 'Silver'
+            star_reward = 2
+            
+        cursor.execute("UPDATE students SET stars = stars + ?, contest_rank = ? WHERE id = ?", (star_reward, rank_label, student_id))
+    
+    conn.commit()
     conn.close()
     return redirect(url_for('home'))
 

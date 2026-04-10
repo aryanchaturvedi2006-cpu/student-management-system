@@ -117,6 +117,18 @@
                     </svg>
                     Study Materials
                 </a>
+                <a href="#" class="nav-link" onclick="showTab('pyq-tab', this)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Previous Year Papers
+                </a>
+                <a href="#" class="nav-link" onclick="showTab('contest-tab', this)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Weekly Contest
+                </a>
             </nav>
 
             <div class="sidebar-footer">
@@ -193,6 +205,29 @@
                                 <div class="gpa-score {% if gpa >= 8.0 %}high{% elif gpa >= 6.0 %}medium{% else %}low{% endif %}"
                                     style="display:inline-flex; font-size: 20px; padding: 6px 12px; margin-top: 5px;">
                                     {{ student[10] if student[10] is not none else 'N/A' }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 30px; margin-bottom: 30px; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="text-align:center;">
+                                <p style="margin:0; font-size: 12px; color: #9ca3af; text-transform: uppercase;">Contest Rank</p>
+                                <div style="font-size: 18px; font-weight: 700; color: #ffd700; margin-top: 5px;">
+                                    {% if student[18] == 'Platinum' %}
+                                    <span style="color: #e5e4e2;">💎 PLATINUM</span>
+                                    {% elif student[18] == 'Gold' %}
+                                    <span style="color: #ffd700;">🥇 GOLD</span>
+                                    {% elif student[18] == 'Silver' %}
+                                    <span style="color: #c0c0c0;">🥈 SILVER</span>
+                                    {% else %}
+                                    <span style="color: #9ca3af;">{{ student[18] or 'Unranked' }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div style="text-align:center; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 30px;">
+                                <p style="margin:0; font-size: 12px; color: #9ca3af; text-transform: uppercase;">Stars Earned</p>
+                                <div style="font-size: 24px; font-weight: 700; color: #f59e0b; margin-top: 5px;">
+                                    ⭐ {{ student[17] or 0 }}
                                 </div>
                             </div>
                         </div>
@@ -526,6 +561,125 @@
 
                     </div>
                 </div>
+
+                <!-- TAB 5: PYQS -->
+                <div id="pyq-tab" class="tab-content">
+                    <div class="section-header">
+                        <h3>Previous Year Papers (PYQs)</h3>
+                    </div>
+                    <div class="glass-panel form-panel">
+                        <p style="color:#9ca3af; font-size:13px; margin-bottom: 20px;">Access official previous year examination papers to help with your preparations.</p>
+                        <div class="table-container glass-panel-dark">
+                            <table class="premium-table">
+                                <thead><tr><th>Title</th><th>Date Uploaded</th><th>Action</th></tr></thead>
+                                <tbody>
+                                    {% if pyqs %}
+                                    {% for doc in pyqs %}
+                                    <tr>
+                                        <td><strong>{{ doc[3] }}</strong></td>
+                                        <td>{{ doc[6][:10] }}</td>
+                                        <td><a href="{{ url_for('static', filename=doc[4]) }}" target="_blank" class="premium-btn" style="padding:5px 10px; font-size:11px; text-decoration:none; background: rgba(139, 92, 246, 0.2); color:#c4b5fd; border-color: rgba(139, 92, 246, 0.4);">Download PDF</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <tr><td colspan="3" style="text-align:center; color:#6b7280; padding: 20px;">No PYQs available at the moment.</td></tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: WEEKLY CONTEST -->
+                <div id="contest-tab" class="tab-content">
+                    <div class="section-header">
+                        <h3>Weekly Saturday Contest</h3>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap: 30px;">
+                        <div>
+                            <div class="glass-panel form-panel" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.2) 0%, rgba(124, 58, 237, 0.1) 100%); border: 1px solid rgba(139, 92, 246, 0.3);">
+                                <h3 style="margin-top:0; color: #c4b5fd;">🔥 Next Weekly Battle</h3>
+                                <p style="color:#d1d5db; font-size:14px;">Every Saturday 8:00 PM - 10:00 PM. Challenge yourself!</p>
+                                
+                                <div id="contest-timer-box" style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 12px; text-align:center;">
+                                    <div id="contest-status-text" style="font-size: 14px; color: #9ca3af; text-transform: uppercase;">Status</div>
+                                    <div id="contest-countdown" style="font-size: 32px; font-weight: 700; color: #fff; margin: 10px 0;">-- : -- : --</div>
+                                    <div id="contest-action-area"></div>
+                                </div>
+                                
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 13px;">
+                                    <div class="glass-panel-dark" style="padding: 15px; border-radius: 10px;">
+                                        <div style="color:#9ca3af;">Format</div>
+                                        <div style="color:#fff; font-weight:600;">MCQ Series</div>
+                                    </div>
+                                    <div class="glass-panel-dark" style="padding: 15px; border-radius: 10px;">
+                                        <div style="color:#9ca3af;">Rewards</div>
+                                        <div style="color:#ffd700; font-weight:600;">Stars & Badges</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="glass-panel form-panel">
+                                <h3 style="margin-top:0;">Leaderboard</h3>
+                                <div id="leaderboard-container">
+                                    <table class="premium-table">
+                                        <thead><tr><th>#</th><th>Student</th><th>Stars</th></tr></thead>
+                                        <tbody id="leaderboard-body">
+                                            <tr><td colspan="3" style="text-align:center;">Loading...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function updateContestStatus() {
+                        const now = new Date();
+                        const day = now.getDay(); 
+                        const hour = now.getHours();
+                        const statusEl = document.getElementById('contest-status-text');
+                        const countdownEl = document.getElementById('contest-countdown');
+                        const actionEl = document.getElementById('contest-action-area');
+                        
+                        if (day === 6 && hour >= 20 && hour < 22) {
+                            statusEl.innerText = "🔴 LIVE NOW";
+                            countdownEl.innerText = "ACTIVE";
+                            actionEl.innerHTML = `<button onclick="showTab('quizzes-tab')" class="premium-btn" style="width:100%;">Go to Contests</button>`;
+                        } else {
+                            statusEl.innerText = "Scheduled: Saturday 8 PM";
+                            let target = new Date();
+                            target.setDate(now.getDate() + (6 - day + (day >= 6 && hour >= 20 ? 7 : 0)));
+                            target.setHours(20, 0, 0, 0);
+                            const diff = target - now;
+                            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                            const s = Math.floor((diff % (1000 * 60)) / 1000);
+                            countdownEl.innerText = d + "d " + h + "h " + m + "m " + s + "s";
+                            actionEl.innerHTML = `<span style="color:#9ca3af; font-size:12px;">Waiting for Saturday...</span>`;
+                        }
+                    }
+                    async function loadLeaderboard() {
+                        try {
+                            const res = await fetch('/api/leaderboard');
+                            const data = await res.json();
+                            const tbody = document.getElementById('leaderboard-body');
+                            tbody.innerHTML = data.map((s, i) => `
+                                <tr>
+                                    <td>${i+1}</td>
+                                    <td>${s.name}<br><small style="color:#9ca3af;">${s.rank}</small></td>
+                                    <td style="color:#f59e0b; font-weight:700;">⭐ ${s.stars}</td>
+                                </tr>`).join('');
+                        } catch(e) {}
+                    }
+                    setInterval(updateContestStatus, 1000);
+                    updateContestStatus(); loadLeaderboard();
+                </script>
 
             </div>
         </main>
