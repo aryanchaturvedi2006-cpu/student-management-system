@@ -32,14 +32,6 @@ google = oauth.register(
     client_kwargs={'scope': 'openid email profile'}
 )
 
-# Configure Microsoft OAuth
-microsoft = oauth.register(
-    name='microsoft',
-    client_id=os.getenv('MICROSOFT_CLIENT_ID', ''),
-    client_secret=os.getenv('MICROSOFT_CLIENT_SECRET', ''),
-    server_metadata_url='https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
-    client_kwargs={'scope': 'openid email profile'}
-)
 
 # ---------------- DATABASE ----------------
 def init_db():
@@ -338,73 +330,6 @@ def authorize_google():
         print(f"OAuth error: {e}")
         return redirect(url_for('login'))
 
-@app.route('/login/microsoft')
-def login_microsoft():
-    redirect_uri = url_for('authorize_microsoft', _external=True)
-    return microsoft.authorize_redirect(redirect_uri)
-
-@app.route('/authorize/microsoft')
-def authorize_microsoft():
-    try:
-        token = microsoft.authorize_access_token()
-        user_info = token.get('userinfo')
-        
-        if user_info:
-            email = user_info.get('email')
-            name = user_info.get('name', email.split('@')[0])
-            picture = user_info.get('picture', '')
-            provider_id = user_info.get('id')
-            
-            conn = sqlite3.connect('students.db')
-            cursor = conn.cursor()
-            
-            # Check if user exists
-            cursor.execute("SELECT id, user_type FROM oauth_users WHERE provider=? AND provider_id=?", ('microsoft', provider_id))
-            oauth_user = oauth_user = cursor.fetchone()
-            
-            if not oauth_user:
-                # Create new OAuth user
-                created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                cursor.execute('''
-                    INSERT INTO oauth_users (provider, provider_id, email, name, profile_pic, user_type, created_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)
-                ''', ('microsoft', provider_id, email, name, picture, 'student', created_at))
-                conn.commit()
-                user_type = 'student'
-                oauth_user_id = cursor.lastrowid
-            else:
-                oauth_user_id, user_type = oauth_user
-            
-            # Link to student profile
-            if user_type == 'student':
-                cursor.execute("SELECT id FROM students WHERE email=?", (email,))
-                student_record = cursor.fetchone()
-                if student_record:
-                    session['student_id'] = student_record[0]
-                else:
-                    # Create a blank student profile for the new OAuth user
-                    student_pwd_hash = generate_password_hash('oauth_login_only')
-                    cursor.execute("INSERT INTO students (name, email, roll, password) VALUES (?, ?, ?, ?)", (name, email, f"OAUTH-{str(provider_id)[:6]}", student_pwd_hash))
-                    conn.commit()
-                    session['student_id'] = cursor.lastrowid
-
-            conn.close()
-            
-            # Set session
-            session['user'] = name
-            session['email'] = email
-            session['oauth_user_id'] = oauth_user_id
-            session['role'] = user_type
-            session['oauth_provider'] = 'microsoft'
-            
-            # Redirect based on user type
-            if user_type == 'admin':
-                return redirect(url_for('home'))
-            else:
-                return redirect(url_for('student_dashboard'))
-    except Exception as e:
-        print(f"OAuth error: {e}")
-        return redirect(url_for('login'))
 
 # -------- END OAUTH ROUTES --------
 
