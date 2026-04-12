@@ -18,8 +18,7 @@
     width: 100%;
     height: 100%;
     display: flex;
-    background: radial-gradient(circle at top right, rgba(106, 90, 249, 0.15) 0%, rgba(10, 11, 16, 1) 50%),
-        radial-gradient(circle at bottom left, rgba(74, 61, 240, 0.1) 0%, rgba(10, 11, 16, 1) 50%);
+    background-color: #0a0b10;
 }
 
 .login-illustration-section {
@@ -38,7 +37,7 @@
     left: 0;
     width: 100%;
     padding: 60px;
-    background: linear-gradient(to top, rgba(10, 11, 16, 0.95) 0%, rgba(10, 11, 16, 0) 100%);
+    background: rgba(10, 11, 16, 0.8);
     box-sizing: border-box;
     text-align: left;
 }
@@ -47,10 +46,7 @@
     font-size: 38px;
     font-weight: 700;
     margin: 0;
-    background: linear-gradient(90deg, #b0a8fe, #6a5af9);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #b0a8fe;
     letter-spacing: -0.5px;
 }
 
@@ -185,7 +181,7 @@
 .premium-login-btn,
 .premium-btn {
     width: 100%;
-    background: linear-gradient(135deg, #6a5af9 0%, #4a3df0 100%);
+    background: #6a5af9;
     color: white;
     border: none;
     border-radius: 12px;
@@ -231,8 +227,7 @@
     display: flex;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at top right, rgba(106, 90, 249, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at bottom left, rgba(74, 61, 240, 0.05) 0%, transparent 40%);
+    background-color: #030409;
 }
 
 .sidebar {
@@ -363,7 +358,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #6a5af9, #4a3df0);
+    background: #6a5af9;
     display: flex;
     align-items: center;
     justify-content: center;
