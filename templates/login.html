@@ -20,38 +20,63 @@
 
         .login-layout {
             display: flex;
+            flex-direction: column;
             width: 100%;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        @media (min-width: 900px) {
+            .login-layout {
+                flex-direction: row;
+                height: 100vh;
+                overflow: hidden;
+            }
         }
 
         .login-form-side {
-            flex: 0.8; /* Reduced size to emphasize the image side */
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-end;
-            padding: 40px 20px 40px 20px; /* Minimized padding to remove "any kind of space" */
+            align-items: center;
+            padding: 40px 20px;
             position: relative;
             z-index: 10;
         }
 
+        @media (min-width: 900px) {
+            .login-form-side {
+                flex: 0.8;
+                align-items: flex-end;
+            }
+        }
+
         .login-illustration-side {
-            flex: 1.5; /* Increased size for the illustration */
+            flex: none;
+            width: 100%;
+            height: 35vh; /* Showing the whole image at the top */
             position: relative;
-            display: none;
+            display: block;
+            background: #000;
         }
 
         @media (min-width: 900px) {
             .login-illustration-side {
-                display: block;
+                flex: 1.5;
+                height: 100%;
             }
         }
 
         .illustration-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Ensures the whole image is visible */
+        }
+
+        @media (min-width: 900px) {
+            .illustration-img {
+                object-fit: cover;
+            }
         }
 
         .login-wrapper {
