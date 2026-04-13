@@ -132,9 +132,15 @@ def init_db():
             title TEXT,
             description TEXT,
             due_date TEXT,
+            file_path TEXT,
             created_at TEXT
         )
     ''')
+
+    cursor.execute("PRAGMA table_info(assignment_tasks)")
+    task_cols = [info[1] for info in cursor.fetchall()]
+    if 'file_path' not in task_cols:
+        cursor.execute("ALTER TABLE assignment_tasks ADD COLUMN file_path TEXT DEFAULT ''")
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS quizzes (
@@ -587,6 +593,7 @@ def student_dashboard():
             "title": t[1],
             "desc": t[2],
             "due": t[3].replace("T", " "),
+            "file_path": t[4],
             "locked": locked,
             "attempts": attempts,
             "can_submit": (not locked) and (attempts < 2)
@@ -952,14 +959,40 @@ def create_assignment_task():
     
     if not title or not due_date: return "Missing fields", 400
     
+    file_path = ""
+    if 'assignment_file' in request.files:
+        file = request.files['assignment_file']
+        if file.filename != '':
+            import time
+            filename = f"TASK_{int(time.time())}_{secure_filename(file.filename)}"
+            os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], 'documents', 'assignment_files'), exist_ok=True)
+            save_path = os.path.join(app.config['UPLOAD_FOLDER'], 'documents', 'assignment_files', filename)
+            file.save(save_path)
+            file_path = f"uploads/documents/assignment_files/{filename}"
+
     date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     conn = sqlite3.connect('students.db')
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO assignment_tasks (title, description, due_date, created_at)
-        VALUES (?, ?, ?, ?)
-    ''', (title, description, due_date, date_str))
+        INSERT INTO assignment_tasks (title, description, due_date, file_path, created_at)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (title, description, due_date, file_path, date_str))
+    conn.commit()
+    conn.close()
+    
+    return redirect(url_for('home'))
+
+@app.route('/edit_live_class/<int:class_id>', methods=['POST'])
+def edit_live_class(class_id):
+    if session.get('role') != 'admin': return redirect(url_for('login'))
+    
+    new_title = request.form.get('title')
+    if not new_title: return "Missing title", 400
+    
+    conn = sqlite3.connect('students.db')
+    cursor = conn.cursor()
+    cursor.execute("UPDATE live_classes SET title=? WHERE id=?", (new_title, class_id))
     conn.commit()
     conn.close()
     
