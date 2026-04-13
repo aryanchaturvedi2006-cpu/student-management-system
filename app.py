@@ -10,9 +10,18 @@ from werkzeug.utils import secure_filename
 # Load environment variables from .env file
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    # Use absolute path to ensure .env is found even if started from a different directory
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+    load_dotenv(env_path)
 except ImportError:
     pass  # python-dotenv not installed, use system env vars
+
+# Startup validation for OAuth
+google_client_id = os.getenv('GOOGLE_CLIENT_ID')
+if not google_client_id:
+    print("WARNING: GOOGLE_CLIENT_ID not found in environment. Google Sign-in will fail.")
+else:
+    print(f"DEBUG: GOOGLE_CLIENT_ID loaded successfully: {google_client_id[:10]}...")
 
 app = Flask(__name__)
 app.secret_key = "secret123"
@@ -271,6 +280,7 @@ def logout():
 @app.route('/login/google')
 def login_google():
     redirect_uri = url_for('authorize_google', _external=True)
+    print(f"DEBUG: Redirect URI is {redirect_uri}")
     return google.authorize_redirect(redirect_uri)
 
 @app.route('/authorize/google')
