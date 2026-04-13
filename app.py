@@ -830,21 +830,60 @@ def checkout():
 def process_payment():
     if session.get('role') != 'student': return redirect(url_for('login'))
 
-    student_id = request.form.get('student_id')
+    student_id = session['student_id']
     amount = float(request.form.get('amount', 0))
-    card = request.form.get('card_number', '1234')
+    method_type = request.form.get('method_type', 'card') # card, bank, upi
     
+    # 1. 1 Lakh Daily Limit & 24h Cooldown Check
     conn = sqlite3.connect('students.db')
     cursor = conn.cursor()
     
+    # Sum payments in the last 24 hours
+    one_day_ago = (datetime.now() - timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S")
+    cursor.execute("SELECT SUM(amount) FROM transactions WHERE student_id=? AND date > ?", (student_id, one_day_ago))
+    daily_total = cursor.fetchone()[0] or 0.0
+    
+    LIMIT = 100000.0
+    if daily_total + amount > LIMIT:
+        conn.close()
+        return render_template('payment_fail.html', reason=f"Daily payment limit of ₹1,00,000 reached. Current 24h total: ₹{daily_total:,.2f}. Please try again later.", amount=amount)
+
+    # 2. Determine Method details
+    method_details = ""
+    if method_type == 'card':
+        card = request.form.get('card_number', '****')
+        method_details = f"Card ending in {card[-4:]}"
+    elif method_type == 'bank':
+        acc = request.form.get('account_number', '****')
+        method_details = f"Bank Transfer (A/C: {acc[-4:]})"
+    elif method_type == 'upi':
+        upi = request.form.get('upi_id', 'User')
+        method_details = f"UPI Payment (ID: {upi})"
+    
+    # 3. Process Transaction
     date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    cursor.execute("INSERT INTO transactions (student_id, amount, date, method) VALUES (?, ?, ?, ?)", (student_id, amount, date_str, f"Card ending in {card[-4:]}"))
+    cursor.execute("INSERT INTO transactions (student_id, amount, date, method) VALUES (?, ?, ?, ?)", (student_id, amount, date_str, method_details))
+    transaction_id = cursor.lastrowid
+    
     cursor.execute("UPDATE fees SET paid_amount = paid_amount + ? WHERE student_id=?", (amount, student_id))
+    
+    # Get student name for the receipt
+    cursor.execute("SELECT name, roll FROM students WHERE id=?", (student_id,))
+    student_info = cursor.fetchone()
     
     conn.commit()
     conn.close()
     
-    return render_template('payment_success.html')
+    receipt_data = {
+        "id": f"TXN{transaction_id:06d}",
+        "date": date_str,
+        "name": student_info[0],
+        "roll": student_info[1],
+        "amount": amount,
+        "method": method_details
+    }
+    
+    return render_template('payment_receipt.html', receipt=receipt_data)
 
 # ---------------- EXPORT ----------------
 @app.route('/export')
