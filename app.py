@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, Response, session, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.middleware.proxy_fix import ProxyFix
 import sqlite3
 import json
 import os
@@ -24,6 +25,8 @@ else:
     print(f"DEBUG: GOOGLE_CLIENT_ID loaded successfully: {google_client_id[:10]}...")
 
 app = Flask(__name__)
+# Apply ProxyFix for Render deployments (handles HTTPS behind load balancer)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 app.secret_key = "secret123"
 app.permanent_session_lifetime = timedelta(days=30)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -279,8 +282,10 @@ def logout():
 # -------- OAUTH ROUTES --------
 @app.route('/login/google')
 def login_google():
-    redirect_uri = url_for('authorize_google', _external=True)
-    print(f"DEBUG: Redirect URI is {redirect_uri}")
+    # Force _scheme='https' for production deployment
+    scheme = 'https' if 'onrender.com' in request.host else 'http'
+    redirect_uri = url_for('authorize_google', _external=True, _scheme=scheme)
+    print(f"DEBUG: Final Redirect URI being sent to Google: {redirect_uri}")
     return google.authorize_redirect(redirect_uri)
 
 @app.route('/authorize/google')
