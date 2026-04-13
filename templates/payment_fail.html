@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Failed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at center, #2e1010, #030409 60%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glass-panel"
+        style="padding: 50px; text-align: center; border-radius: 20px; border-color: rgba(239,68,68,0.2); max-width: 500px;">
+        <div
+            style="width: 80px; height: 80px; border-radius: 50%; background: rgba(239,68,68,0.1); color: #ef4444; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </div>
+        <h2 style="margin: 0 0 10px 0; color: #fff;">Transaction Blocked</h2>
+        <p style="color: #ef4444; font-weight: 600; margin: 0 0 10px 0;">Compliance Policy Violation</p>
+        <p style="color: #9ca3af; margin: 0 0 30px 0; line-height: 1.6;">{{ reason }}</p>
+        
+        <div style="display: flex; gap: 15px;">
+            <a href="/student_dashboard" class="premium-btn"
+                style="text-decoration:none; flex: 1; padding: 12px; background: transparent; border: 1px solid rgba(255,255,255,0.1);">Back to Home</a>
+            <a href="javascript:history.back()" class="premium-btn"
+                style="text-decoration:none; flex: 1; padding: 12px;">Try Different Amount</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

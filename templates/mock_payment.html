@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Secure Checkout</title>
+    <title>Checkout | Secure Institution Payment</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
@@ -13,30 +13,95 @@
             justify-content: center;
             min-height: 100vh;
             background-image: radial-gradient(circle at top right, #1a1738, #030409 60%);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
         }
 
         .checkout-box {
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             padding: 40px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .amount {
-            font-size: 40px;
+        .amount-display {
+            font-size: 36px;
             font-weight: 700;
             color: #fff;
             margin: 20px 0;
+            letter-spacing: -1px;
         }
 
-        .card-element {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
+        .payment-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 5px;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: #9ca3af;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-section {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .payment-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-group {
             margin-bottom: 20px;
             text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            color: #9ca3af;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .secure-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(52, 211, 153, 0.1);
+            color: #34d399;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -44,42 +109,105 @@
 <body>
 
     <div class="glass-panel checkout-box">
-        <svg width="40" height="40" fill="none" stroke="#6a5af9" stroke-width="1.5" viewBox="0 0 24 24"
-            style="margin-bottom:10px;">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-            </path>
-        </svg>
-        <h2 style="margin:0; font-size:20px; color:#b0a8fe;">Secure Fee Payment Sandbox</h2>
-        <p style="color:#6b7280; font-size: 13px; margin-top:5px;">Simulated Stripe Payment Environment</p>
+        <div class="secure-badge">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            SSL SECURE PAYMENT PORTAL
+        </div>
+        
+        <h2 style="margin:0; font-size:20px; color:#fff;">Complete Your Enrollment</h2>
+        <p style="color:#6b7280; font-size: 13px; margin: 10px 0 0 0;">Transaction #{{ range(100000, 999999) | random }}</p>
 
-        <div class="amount">₹{{ "%.2f"|format(amount) }}</div>
+        <div class="amount-display">₹{{ "%.2f"|format(amount) }}</div>
 
-        <form action="/process_payment" method="POST">
-            <input type="hidden" name="student_id" value="{{ student_id }}">
+        <div class="payment-tabs">
+            <button class="tab-btn active" onclick="switchMethod('card')">Card</button>
+            <button class="tab-btn" onclick="switchMethod('bank')">Net Banking</button>
+            <button class="tab-btn" onclick="switchMethod('upi')">UPI ID</button>
+        </div>
+
+        <form action="/process_payment" method="POST" id="payment-form">
             <input type="hidden" name="amount" value="{{ amount }}">
+            <input type="hidden" name="method_type" id="method_type" value="card">
 
-            <div class="card-element">
-                <label style="display:block; color:#9ca3af; font-size:12px; margin-bottom:10px;">Card
-                    Information</label>
-                <input type="text" name="card_number" placeholder="4242 4242 4242 4242" class="glass-input" required
-                    maxlength="16" pattern="\d*" style="margin-bottom:10px;">
-                <div style="display:flex; gap:10px;">
-                    <input type="text" placeholder="MM/YY" class="glass-input" required style="width:50%;">
-                    <input type="text" placeholder="CVC" class="glass-input" required style="width:50%;">
+            <!-- Card Section -->
+            <div id="card-section" class="payment-section active">
+                <div class="input-group">
+                    <label>Card Number</label>
+                    <input type="text" name="card_number" placeholder="4242 4242 4242 4242" class="glass-input" maxlength="16" pattern="\d*">
                 </div>
-                <p style="font-size: 11px; margin-top:10px; color: #f59e0b;">* You can use any fake numbers in this
-                    sandbox.</p>
+                <div style="display:flex; gap:15px;">
+                    <div class="input-group" style="flex:1;">
+                        <label>Expiry Date</label>
+                        <input type="text" placeholder="MM / YY" class="glass-input">
+                    </div>
+                    <div class="input-group" style="flex:1;">
+                        <label>CVV</label>
+                        <input type="password" placeholder="***" class="glass-input" maxlength="3">
+                    </div>
+                </div>
             </div>
 
-            <button type="submit" class="premium-btn" style="width:100%; padding:15px; font-size:16px;">Pay ₹{{
-                "%.2f"|format(amount) }}</button>
-            <div style="margin-top: 15px;">
-                <a href="/student_dashboard" style="color: #6b7280; text-decoration:none; font-size:14px;">Cancel and
-                    Return</a>
+            <!-- Bank Section -->
+            <div id="bank-section" class="payment-section">
+                <div class="input-group">
+                    <label>Select Bank</label>
+                    <select class="glass-input" style="width:100%; color:#fff; background: #000;">
+                        <option>State Bank of India</option>
+                        <option>HDFC Bank</option>
+                        <option>ICICI Bank</option>
+                        <option>Axis Bank</option>
+                        <option>Kotak Mahindra Bank</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Account Number</label>
+                    <input type="text" name="account_number" placeholder="Account Number" class="glass-input">
+                </div>
+                <div class="input-group">
+                    <label>IFSC Code</label>
+                    <input type="text" placeholder="SBIN0001234" class="glass-input">
+                </div>
+            </div>
+
+            <!-- UPI Section -->
+            <div id="upi-section" class="payment-section">
+                <div class="input-group">
+                    <label>UPI ID (VPA)</label>
+                    <input type="text" name="upi_id" placeholder="username@upi" class="glass-input">
+                </div>
+                <p style="color:#6b7280; font-size:12px; margin-top: -10px;">A request will be sent to your UPI app.</p>
+            </div>
+
+            <button type="submit" class="premium-btn" style="width:100%; padding:16px; font-size:16px; margin-top:10px; border-radius: 12px;">Authorize Payment</button>
+            
+            <div style="margin-top: 25px; text-align:center;">
+                <a href="/student_dashboard" style="color: #6b7280; text-decoration:none; font-size:14px; font-weight:500;">Cancel Transaction</a>
             </div>
         </form>
     </div>
+
+    <script>
+        function switchMethod(method) {
+            // Update UI
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            const btn = document.querySelector(`.tab-btn[onclick="switchMethod('${method}')"]`);
+            if(btn) btn.classList.add('active');
+            
+            // Show section
+            document.querySelectorAll('.payment-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(method + '-section').classList.add('active');
+            
+            // Set hidden field
+            document.getElementById('method_type').value = method;
+
+            // Make fields required based on visibility
+            document.querySelectorAll('.payment-section input').forEach(input => input.required = false);
+            document.querySelectorAll('#' + method + '-section input').forEach(input => input.required = true);
+        }
+        
+        // Init card as required
+        document.querySelectorAll('#card-section input').forEach(input => input.required = true);
+    </script>
 
 </body>
 

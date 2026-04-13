@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Official Fee Receipt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .receipt-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            color: #4f46e5;
+            margin-bottom: 5px;
+        }
+
+        .status-badge {
+            background: #dcfce7;
+            color: #166534;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .detail-label {
+            color: #64748b;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .total-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .total-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .total-amount {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-top: 5px;
+        }
+
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #4f46e5;
+            border: 1px solid #4f46e5;
+        }
+
+        @media print {
+            .actions { display: none; }
+            body { padding: 0; background: white; }
+            .receipt-container { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="receipt-container">
+        <div class="header">
+            <div class="logo">EduSync Portal</div>
+            <div style="font-size: 14px; color: #64748b;">Official Fee Payment Receipt</div>
+            <div class="status-badge">PAYMENT SUCCESSFUL</div>
+        </div>
+
+        <div class="detail-row">
+            <span class="detail-label">Transaction ID</span>
+            <span class="detail-value">{{ receipt.id }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Date & Time</span>
+            <span class="detail-value">{{ receipt.date }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Student Name</span>
+            <span class="detail-value">{{ receipt.name }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Roll Number</span>
+            <span class="detail-value">{{ receipt.roll }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Payment Method</span>
+            <span class="detail-value">{{ receipt.method }}</span>
+        </div>
+
+        <div class="total-box">
+            <div class="total-label">Total Amount Paid</div>
+            <div class="total-amount">₹{{ "%.2f"|format(receipt.amount) }}</div>
+        </div>
+
+        <div style="margin-top: 30px; font-size: 11px; color: #94a3b8; text-align: center;">
+            This is a computer-generated receipt and does not require a physical signature.
+            <br>© {{ receipt.date[:4] }} EduSync Institution Management System
+        </div>
+
+        <div class="actions">
+            <button onclick="window.print()" class="btn btn-outline">Print Receipt</button>
+            <a href="/student_dashboard" class="btn btn-primary">Go to Dashboard</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
