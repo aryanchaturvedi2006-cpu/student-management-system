@@ -1,0 +1,816 @@
+﻿node.exe : <markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control 
+(label-has-control) [4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:532:37[24m[0m
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (<markup[38;5;3...532:37[24m[0m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  [36m531[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m532[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mFull[38;5;8mΓÇó[0mName</label>
+  [36m533[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="name"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0m
+class="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:536:37[24m[0m
+  [36m535[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m536[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mRoll[38;5;8mΓÇó[0mNumber</label>
+  [36m537[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="roll"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0m
+class="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:540:37[24m[0m
+  [36m539[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m540[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mAge</label>
+  [36m541[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="number"[38;5;8mΓÇó[0mname="age"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:544:37[24m[0m
+  [36m543[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m544[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mDate[38;5;8mΓÇó[0mof[38;5;8mΓÇó[0mBirth</label>
+  [36m545[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="date"[38;5;8mΓÇó[0mname="dob"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:548:37[24m[0m
+  [36m547[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m548[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mGender</label>
+  [36m549[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="gender"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:552:37[24m[0m
+  [36m551[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m552[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mPhone</label>
+  [36m553[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="phone"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:556:37[24m[0m
+  [36m555[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m556[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mEmail</label>
+  [36m557[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="email"[38;5;8mΓÇó[0mname="email"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:560:37[24m[0m
+  [36m559[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m560[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mSemester</label>
+  [36m561[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="semester"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:566:33[24m[0m
+  [36m565[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group"[38;5;8mΓÇó[0mstyle="margin-top:[38;5;8mΓÇó[0m15px;">
+  [36m566[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mAddress</label>
+  [36m567[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="address"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:572:37[24m[0m
+  [36m571[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m572[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mGlobal[38;5;8mΓÇó[0mAttendance[38;5;8mΓÇó[0m%</label>
+  [36m573[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="attendance"[38;5;8mΓÇó[0mclass="glass-input
+"
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:577:37[24m[0m
+  [36m576[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m577[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mExtra[38;5;8mΓÇó[0mActivities</label>
+  [36m578[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="extra_activities"[38;5;8mΓÇó[0mclass="glass
+-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:581:37[24m[0m
+  [36m580[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m581[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mSports[38;5;8mΓÇó[0mAchievements</label>
+  [36m582[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="sports_achievements"[38;5;8mΓÇó[0mclass="gl
+ass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:585:37[24m[0m
+  [36m584[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group[38;5;8mΓÇó[0mgpa-display">
+  [36m585[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mCalculated[38;5;8mΓÇó[0mGPA</label>
+  [36m586[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mid="gpa-add"[38;5;8mΓÇó[0mreadonly[38;5;8mΓÇó[0
+mvalue="0.00"
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:613:29[24m[0m
+  [36m612[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó
+[0mclass="input-group"[38;5;8mΓÇó[0mstyle="margin-bottom:[38;5;8mΓÇó[0m20px;">
+  [36m613[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m
+<label>[49mSelect[38;5;8mΓÇó[0mStudent[38;5;8mΓÇó[0mProfile</label>
+  [36m614[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<sele
+ct[38;5;8mΓÇó[0mid="attendance-student-select"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8mΓÇó[0monchange="loadAttend
+ance()">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:632:41[24m[0m
+  [36m631[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m632[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mDate</label>
+  [36m633[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="date"[38;5;8mΓÇó[0mid="attendance-date"[38;5;8mΓÇó[0mcla
+ss="glass-input"[38;5;8mΓÇó[0mrequired>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:636:41[24m[0m
+  [36m635[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m636[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mCourse</label>
+  [36m637[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<select[38;5;8mΓÇó[0mid="attendance-course"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8
+mΓÇó[0mrequired>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:641:41[24m[0m
+  [36m640[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m641[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mStatus</label>
+  [36m642[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<select[38;5;8mΓÇó[0mid="attendance-status"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8
+mΓÇó[0mrequired>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:714:41[24m[0m
+  [36m713[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m714[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mTitle[38;5;8mΓÇó[0mof[38;5;8mΓÇó[0mthe[38;5;8mΓÇó[0mLive[38;5;8m
+ΓÇó[0mSession</label>
+  [36m715[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="title"[38;5;8mΓÇó[0mrequired[3
+8;5;8mΓÇó[0mclass="glass-input"[38;5;8mΓÇó[0mplaceholder="e.g.[38;5;8mΓÇó[0mCalculus[38;5;8mΓÇó[0mWeekly[38;5;8
+mΓÇó[0mReview">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:760:33[24m[0m
+  [36m759[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group">
+  [36m760[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mTask[38;5;8mΓÇó[0mTitle</label>
+  [36m761[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="title"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="glas
+s-input"[38;5;8mΓÇó[0mplaceholder="e.g.[38;5;8mΓÇó[0mHistory[38;5;8mΓÇó[0mChapter[38;5;8mΓÇó[0m4[38;5;8mΓÇó[0
+mEssay">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:764:33[24m[0m
+  [36m763[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group">
+  [36m764[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mDescription[38;5;8mΓÇó[0m(Optional)</label>
+  [36m765[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<textarea[38;5;8mΓÇó[0mname="description"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8mΓÇó[0mrows="2"[38;5;8mΓ
+Çó[0mplaceholder="Instructions..."></textarea>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:768:33[24m[0m
+  [36m767[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group"[38;5;8mΓÇó[0mstyle="margin-bottom:[38;5;8mΓÇó[0m20px;">
+  [36m768[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mUpload[38;5;8mΓÇó[0mAssignment[38;5;8mΓÇó[0mFile[38;5;8mΓÇó[0m(PDF,[38;5;8mΓÇó[0mWord,
+[38;5;8mΓÇó[0mPPT)</label>
+  [36m769[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="file"[38;5;8mΓÇó[0mname="assignment_file"[38;5;8mΓÇó[0mclass="glass-input"[38;5
+;8mΓÇó[0mstyle="padding:[38;5;8mΓÇó[0m10px;">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:773:33[24m[0m
+  [36m772[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group">
+  [36m773[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mStrict[38;5;8mΓÇó[0mServer[38;5;8mΓÇó[0mDeadline[38;5;8mΓÇó[0m(Date[38;5;8mΓÇó[0m&[38;
+5;8mΓÇó[0mTime)</label>
+  [36m774[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="datetime-local"[38;5;8mΓÇó[0mname="due_date"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[
+0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:812:37[24m[0m
+  [36m811[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m812[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mQuiz[38;5;8mΓÇó[0mTitle</label>
+  [36m813[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="title"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0
+mclass="glass-input"[38;5;8mΓÇó[0mplaceholder="e.g.[38;5;8mΓÇó[0mPhysics[38;5;8mΓÇó[0mMidterm">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:816:37[24m[0m
+  [36m815[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m816[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mStrict[38;5;8mΓÇó[0mDeadline[38;5;8mΓÇó[0m(Date[38;5;8mΓÇó[0m&[38;5;8mΓÇó[0
+mTime)</label>
+  [36m817[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="datetime-local"[38;5;8mΓÇó[0mname="due_date"[38;5;8mΓÇó[0mrequired[
+38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:820:37[24m[0m
+  [36m819[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m820[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mTime[38;5;8mΓÇó[0mLimit[38;5;8mΓÇó[0m(Minutes)</label>
+  [36m821[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="number"[38;5;8mΓÇó[0mname="duration_minutes"[38;5;8mΓÇó[0mrequired[
+38;5;8mΓÇó[0mmin="1"[38;5;8mΓÇó[0mmax="180"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8mΓÇó[0mvalue="15">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:859:33[24m[0m
+  [36m858[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group">
+  [36m859[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mMaterial[38;5;8mΓÇó[0mTitle</label>
+  [36m860[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="title"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="glas
+s-input"[38;5;8mΓÇó[0mplaceholder="e.g.[38;5;8mΓÇó[0mMachine[38;5;8mΓÇó[0mLearning[38;5;8mΓÇó[0mSyllabus">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:863:33[24m[0m
+  [36m862[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group"[38;5;8mΓÇó[0mstyle="margin-top:10px;">
+  [36m863[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mUpload[38;5;8mΓÇó[0mFile[38;5;8mΓÇó[0m(Any[38;5;8mΓÇó[0mFormat)</label>
+  [36m864[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="file"[38;5;8mΓÇó[0mname="document"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="g
+lass-input"[38;5;8mΓÇó[0mstyle="padding-top:10px;">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:904:33[24m[0m
+  [36m903[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group">
+  [36m904[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mPaper[38;5;8mΓÇó[0mTitle</label>
+  [36m905[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="text"[38;5;8mΓÇó[0mname="title"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="glas
+s-input"[38;5;8mΓÇó[0mplaceholder="e.g.[38;5;8mΓÇó[0m2023[38;5;8mΓÇó[0mMathematics[38;5;8mΓÇó[0mSemester[38;5;
+8mΓÇó[0m2">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:908:33[24m[0m
+  [36m907[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="input-group"[38;5;8mΓÇó[0mstyle="margin-top:10px;">
+  [36m908[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<label>[49mUpload[38;5;8mΓÇó[0mPDF[38;5;8mΓÇó[0m/[38;5;8mΓÇó[0mDocument</label>
+  [36m909[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<input[38;5;8mΓÇó[0mtype="file"[38;5;8mΓÇó[0mname="document"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="g
+lass-input"[38;5;8mΓÇó[0mstyle="padding-top:10px;">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:984:25[24m[0m
+  [36m983[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m984[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49m
+Full[38;5;8mΓÇó[0mName</label>
+  [36m985[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇ
+ó[0mtype="text"[38;5;8mΓÇó[0mname="name"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[1][38;5;8mΓÇó[0m}}"
+[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:988:25[24m[0m
+  [36m987[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m988[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49m
+Roll[38;5;8mΓÇó[0mNumber</label>
+  [36m989[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇ
+ó[0mtype="text"[38;5;8mΓÇó[0mname="roll"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[2][38;5;8mΓÇó[0m}}"
+[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:992:25[24m[0m
+  [36m991[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m992[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mAge</label>
+  [36m993[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇ
+ó[0mtype="number"[38;5;8mΓÇó[0mname="age"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[3][38;5;8mΓÇó[0mor
+[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:996:25[24m[0m
+  [36m995[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m996[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49m
+Date[38;5;8mΓÇó[0mof[38;5;8mΓÇó[0mBirth</label>
+  [36m997[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇ
+ó[0mtype="date"[38;5;8mΓÇó[0mname="dob"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[4][38;5;8mΓÇó[0mor[3
+8;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1000:25[24m[0m
+  [36m999[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1000[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mGender</label>
+  [36m1001[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="text"[38;5;8mΓÇó[0mname="gender"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[5][38;5;8mΓÇó[0mo
+r[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1004:25[24m[0m
+  [36m1003[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1004[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mPhone</label>
+  [36m1005[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="text"[38;5;8mΓÇó[0mname="phone"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[7][38;5;8mΓÇó[0mor
+[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1008:25[24m[0m
+  [36m1007[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1008[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mEmail</label>
+  [36m1009[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="email"[38;5;8mΓÇó[0mname="email"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[8][38;5;8mΓÇó[0mo
+r[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1012:25[24m[0m
+  [36m1011[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1012[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mSemester</label>
+  [36m1013[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="text"[38;5;8mΓÇó[0mname="semester"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[9][38;5;8mΓÇó[0
+mor[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1018:21[24m[0m
+  [36m1017[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group"
+[38;5;8mΓÇó[0mstyle="margin-top:[38;5;8mΓÇó[0m15px;">
+  [36m1018[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mAddress</label>
+  [36m1019[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="
+text"[38;5;8mΓÇó[0mname="address"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[6][38;5;8mΓÇó[0mor[38;5;8mΓ
+Çó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1024:25[24m[0m
+  [36m1023[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1024[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49
+mGlobal[38;5;8mΓÇó[0mAttendance[38;5;8mΓÇó[0m%</label>
+  [36m1025[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="text"[38;5;8mΓÇó[0mname="attendance"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[11][38;5;8mΓÇó
+[0mor[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mclass="glass-input">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1028:25[24m[0m
+  [36m1027[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1028[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49
+mExtra[38;5;8mΓÇó[0mActivities</label>
+  [36m1029[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="text"[38;5;8mΓÇó[0mname="extra_activities"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[12][38;5
+;8mΓÇó[0mor[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1033:25[24m[0m
+  [36m1032[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1033[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49
+mSports[38;5;8mΓÇó[0mAchievements</label>
+  [36m1034[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="text"[38;5;8mΓÇó[0mname="sports_achievements"[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_student[13][3
+8;5;8mΓÇó[0mor[38;5;8mΓÇó[0m''[38;5;8mΓÇó[0m}}"
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1038:25[24m[0m
+  [36m1037[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="i
+nput-group[38;5;8mΓÇó[0mgpa-display">
+  [36m1038[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49
+mCalculated[38;5;8mΓÇó[0mGPA</label>
+  [36m1039[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓ
+Çó[0mtype="text"[38;5;8mΓÇó[0mid="gpa-edit"[38;5;8mΓÇó[0mreadonly[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0medit_stu
+dent[10][38;5;8mΓÇó[0m}}"
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1096:21[24m[0m
+  [36m1095[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group"
+[38;5;8mΓÇó[0mstyle="margin-bottom:[38;5;8mΓÇó[0m20px;">
+  [36m1096[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mTotal[38;5
+;8mΓÇó[0mFee[38;5;8mΓÇó[0mAmount[38;5;8mΓÇó[0m(Γé╣)</label>
+  [36m1097[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="
+number"[38;5;8mΓÇó[0mid="fee-amount"[38;5;8mΓÇó[0mstep="0.01"[38;5;8mΓÇó[0mvalue="0.00"[38;5;8mΓÇó[0mclass="gla
+ss-input"[38;5;8mΓÇó[0mrequired>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1101:21[24m[0m
+  [36m1100[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group"
+[38;5;8mΓÇó[0mstyle="margin-bottom:[38;5;8mΓÇó[0m30px;">
+  [36m1101[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mDue[38;5;8
+mΓÇó[0mDate</label>
+  [36m1102[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="
+date"[38;5;8mΓÇó[0mid="fee-due-date"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8mΓÇó[0mrequired>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1129:21[24m[0m
+  [36m1128[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group"
+[38;5;8mΓÇó[0mstyle="margin-bottom:[38;5;8mΓÇó[0m20px;">
+  [36m1129[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mAmount[38;
+5;8mΓÇó[0mReceived[38;5;8mΓÇó[0m(Γé╣)</label>
+  [36m1130[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="
+number"[38;5;8mΓÇó[0mid="rp-amount"[38;5;8mΓÇó[0mstep="0.01"[38;5;8mΓÇó[0mvalue=""[38;5;8mΓÇó[0mclass="glass-in
+put"[38;5;8mΓÇó[0mrequired
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1135:21[24m[0m
+  [36m1134[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group"
+[38;5;8mΓÇó[0mstyle="margin-bottom:[38;5;8mΓÇó[0m30px;">
+  [36m1135[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mPayment[38
+;5;8mΓÇó[0mMethod</label>
+  [36m1136[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<select[38;5;8mΓÇó[0mid="r
+p-method"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8mΓÇó[0mrequired>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: The "label" element should associate with a control (label-has-control) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1161:21[24m[0m
+  [36m1160[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="input-group">
+  [36m1161[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<label>[49mNew[38;5;8
+mΓÇó[0mTitle</label>
+  [36m1162[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<input[38;5;8mΓÇó[0mtype="
+text"[38;5;8mΓÇó[0mid="edit-class-title"[38;5;8mΓÇó[0mname="title"[38;5;8mΓÇó[0mrequired[38;5;8mΓÇó[0mclass="gl
+ass-input">
+<markup[38;5;33mlint[0m> [31merror: The text node is not allowed in the "select" element in this context 
+(permitted-contents) [4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:615:81[24m[39m
+  [36m614[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<sele
+ct[38;5;8mΓÇó[0mid="attendance-student-select"[38;5;8mΓÇó[0mclass="glass-input"[38;5;8mΓÇó[0monchange="loadAttend
+ance()">
+  [36m615[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<option[38;5;8mΓÇó[0mvalue="">--[38;5;8mΓÇó[0mChoose[38;5;8mΓÇó[0ma[38;5;8mΓÇó[0mStudent[38;5;8mΓÇó[0m
+--</option>[41m[49m
+  [36m616[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓ
+ÇóΓÇóΓÇó[0m[49m[41m{% for student, courses in students %}[49m
+  [36m617[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓ
+ÇóΓÇóΓÇó[0m[49m[41m[49m<option[38;5;8mΓÇó[0mvalue="{{[38;5;8mΓÇó[0mstudent[0][38;5;8mΓÇó[0m}}">{{[38;5;8mΓÇó
+[0mstudent[1][38;5;8mΓÇó[0m}}[38;5;8mΓÇó[0m({{[38;5;8mΓÇó[0mstudent[2][38;5;8mΓÇó[0m}})</option>
+  [36m618[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m{%[38;5;8mΓÇó[0mendfor[38;5;8mΓÇó[0m%}
+<markup[38;5;33mlint[0m> [31merror: Need the placeholder label option (placeholder-label-option) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:642:41[24m[39m
+  [36m641[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Status</label>
+  [36m642[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<select id="attendance-status" class="glass-input" required>[49m
+  [36m643[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<option[38;5;8mΓÇó[0mvalue="Present">Present</option>
+<markup[38;5;33mlint[0m> [31merror: Need the placeholder label option (placeholder-label-option) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1136:21[24m[39m
+  [36m1135[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Payment[38;5;8mΓÇó[0mMethod</label>
+  [36m1136[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<select id="rp-method" 
+class="glass-input" required>[49m
+  [36m1137[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<option[38;5;8m
+ΓÇó[0mvalue="Cash">Cash</option>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:447:25[24m[39m
+  [36m446[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="ta
+ble-container[38;5;8mΓÇó[0mglass-panel-dark">
+  [36m447[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<table 
+class="premium-table">[49m
+  [36m448[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<thead>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:533:37[24m[39m
+  [36m532[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Full[38;5;8mΓÇó[0mName</label>
+  [36m533[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" name="name" required class="glass-input">[49m
+  [36m534[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:537:37[24m[39m
+  [36m536[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Roll[38;5;8mΓÇó[0mNumber</label>
+  [36m537[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" name="roll" required class="glass-input">[49m
+  [36m538[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:541:37[24m[39m
+  [36m540[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Age</label>
+  [36m541[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="number" name="age" class="glass-input">[49m
+  [36m542[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:549:37[24m[39m
+  [36m548[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Gender</label>
+  [36m549[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" name="gender" class="glass-input">[49m
+  [36m550[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:553:37[24m[39m
+  [36m552[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Phone</label>
+  [36m553[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" name="phone" class="glass-input">[49m
+  [36m554[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:557:37[24m[39m
+  [36m556[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Email</label>
+  [36m557[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="email" name="email" class="glass-input">[49m
+  [36m558[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:561:37[24m[39m
+  [36m560[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Semester</label>
+  [36m561[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" name="semester" class="glass-input">[49m
+  [36m562[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:567:33[24m[39m
+  [36m566[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<label>Address</label>
+  [36m567[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<input type="text" name="address" class="glass-input">[49m
+  [36m568[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:578:37[24m[39m
+  [36m577[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Extra[38;5;8mΓÇó[0mActivities</label>
+  [36m578[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" name="extra_activities" class="glass-input">[49m
+  [36m579[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:582:37[24m[39m
+  [36m581[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Sports[38;5;8mΓÇó[0mAchievements</label>
+  [36m582[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" name="sports_achievements" class="glass-input">[49m
+  [36m583[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:586:37[24m[39m
+  [36m585[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Calculated[38;5;8mΓÇó[0mGPA</label>
+  [36m586[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" id="gpa-add" readonly value="0.00"[49m
+  [36m587[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓ
+ÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[49m[41mclass="glass-input read-only-input">[49m
+  [36m588[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:614:29[24m[39m
+  [36m613[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<labe
+l>Select[38;5;8mΓÇó[0mStudent[38;5;8mΓÇó[0mProfile</label>
+  [36m614[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<select 
+id="attendance-student-select" class="glass-input" onchange="loadAttendance()">[49m
+  [36m615[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<option[38;5;8mΓÇó[0mvalue="">--[38;5;8mΓÇó[0mChoose[38;5;8mΓÇó[0ma[38;5;8mΓÇó[0mStudent[38;5;8mΓÇó[0m
+--</option>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:688:25[24m[39m
+  [36m687[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="ta
+ble-container[38;5;8mΓÇó[0mglass-panel-dark">
+  [36m688[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<table 
+class="premium-table">[49m
+  [36m689[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<thead>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:726:33[24m[39m
+  [36m725[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mclass="table-container[38;5;8mΓÇó[0mglass-panel-dark"[38;5;8mΓÇó[0mstyle="max-height:[38;5;8mΓÇó[0
+m250px;[38;5;8mΓÇó[0moverflow-y:auto;">
+  [36m726[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<table class="premium-table">[49m
+  [36m727[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<thead><tr><th>Session[38;5;8mΓÇó[0mName</th><th>Action</th></tr></thead>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:765:33[24m[39m
+  [36m764[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<label>Description[38;5;8mΓÇó[0m(Optional)</label>
+  [36m765[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<textarea name="description" class="glass-input" rows="2" placeholder="Instructions...">[49m</textarea>
+  [36m766[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:774:33[24m[39m
+  [36m773[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<label>Strict[38;5;8mΓÇó[0mServer[38;5;8mΓÇó[0mDeadline[38;5;8mΓÇó[0m(Date[38;5;8mΓÇó[0m&[38;5;8mΓÇó[0
+mTime)</label>
+  [36m774[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m[41m<input type="datetime-local" name="due_date" required class="glass-input">[49m
+  [36m775[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:781:25[24m[39m
+  [36m780[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="ta
+ble-container[38;5;8mΓÇó[0mglass-panel-dark"[38;5;8mΓÇó[0mstyle="margin-bottom:[38;5;8mΓÇó[0m40px;">
+  [36m781[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<table 
+class="premium-table">[49m
+  [36m782[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<thea
+d><tr><th>Assignment[38;5;8mΓÇó[0mTitle</th><th>Strict[38;5;8mΓÇó[0mDeadline[38;5;8mΓÇó[0mLock</th><th>Override[
+38;5;8mΓÇó[0mExtension</th></tr></thead>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:791:45[24m[39m
+  [36m790[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<form[38;5;8mΓÇó[0mmethod="POST"[38;5;8mΓÇó[0maction="/extend_deadline/{{[38;5;8mΓÇ
+ó[0mtask[0][38;5;8mΓÇó[0m}}"[38;5;8mΓÇó[0mstyle="display:flex;[38;5;8mΓÇó[0mgap:[38;5;8mΓÇó[0m5px;">
+  [36m791[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="datetime-local" name="due_date" required 
+class="glass-input" style="padding: 4px; font-size: 11px;">[49m
+  [36m792[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<button[38;5;8mΓÇó[0mtype="submit"[38;5;8mΓÇó[0mclass="premium-btn"[38;
+5;8mΓÇó[0mstyle="padding:[38;5;8mΓÇó[0m4px[38;5;8mΓÇó[0m8px;[38;5;8mΓÇó[0mfont-size:[38;5;8mΓÇó[0m11px;">Updat
+e</button>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:817:37[24m[39m
+  [36m816[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Strict[38;5;8mΓÇó[0mDeadline[38;5;8mΓÇó[0m(Date[38;5;8mΓÇó[0m&[38;5;8mΓÇó[0mTime)</la
+bel>
+  [36m817[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="datetime-local" name="due_date" required class="glass-input">[49m
+  [36m818[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:821:37[24m[39m
+  [36m820[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Time[38;5;8mΓÇó[0mLimit[38;5;8mΓÇó[0m(Minutes)</label>
+  [36m821[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="number" name="duration_minutes" required min="1" max="180" class="glass-input" 
+value="15">[49m
+  [36m822[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:870:25[24m[39m
+  [36m869[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="ta
+ble-container[38;5;8mΓÇó[0mglass-panel-dark">
+  [36m870[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<table 
+class="premium-table">[49m
+  [36m871[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<thead>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:916:25[24m[39m
+  [36m915[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="ta
+ble-container[38;5;8mΓÇó[0mglass-panel-dark">
+  [36m916[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<table 
+class="premium-table">[49m
+  [36m917[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<thea
+d><tr><th>Title</th><th>Date[38;5;8mΓÇó[0mUploaded</th><th>Actions</th></tr></thead>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:953:25[24m[39m
+  [36m952[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div[38;5;8mΓÇó[0mclass="ta
+ble-container[38;5;8mΓÇó[0mglass-panel-dark">
+  [36m953[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<table 
+class="premium-table">[49m
+  [36m954[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<thea
+d><tr><th>Contest[38;5;8mΓÇó[0mComponent</th><th>Status</th></tr></thead>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:985:25[24m[39m
+  [36m984[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Full[38;5
+;8mΓÇó[0mName</label>
+  [36m985[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="name" value="{{ edit_student[1] }}" required class="glass-input">[49m
+  [36m986[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:989:25[24m[39m
+  [36m988[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Roll[38;5
+;8mΓÇó[0mNumber</label>
+  [36m989[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="roll" value="{{ edit_student[2] }}" required class="glass-input">[49m
+  [36m990[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:993:25[24m[39m
+  [36m992[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Age</label>
+  [36m993[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="number" name="age" value="{{ edit_student[3] or '' }}" class="glass-input">[49m
+  [36m994[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1001:25[24m[39m
+  [36m1000[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Gender</label>
+  [36m1001[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="gender" value="{{ edit_student[5] or '' }}" class="glass-input">[49m
+  [36m1002[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1005:25[24m[39m
+  [36m1004[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Phone</label>
+  [36m1005[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="phone" value="{{ edit_student[7] or '' }}" class="glass-input">[49m
+  [36m1006[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1009:25[24m[39m
+  [36m1008[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Email</label>
+  [36m1009[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="email" name="email" value="{{ edit_student[8] or '' }}" class="glass-input">[49m
+  [36m1010[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1013:25[24m[39m
+  [36m1012[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Semester</label>
+  [36m1013[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="semester" value="{{ edit_student[9] or '' }}" class="glass-input">[49m
+  [36m1014[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1019:21[24m[39m
+  [36m1018[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Address</label>
+  [36m1019[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input type="text" 
+name="address" value="{{ edit_student[6] or '' }}" class="glass-input">[49m
+  [36m1020[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1025:25[24m[39m
+  [36m1024[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Global[3
+8;5;8mΓÇó[0mAttendance[38;5;8mΓÇó[0m%</label>
+  [36m1025[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="attendance" value="{{ edit_student[11] or '' }}" class="glass-input">[49m
+  [36m1026[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1029:25[24m[39m
+  [36m1028[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Extra[38
+;5;8mΓÇó[0mActivities</label>
+  [36m1029[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="extra_activities" value="{{ edit_student[12] or '' }}"[49m
+  [36m1030[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0
+m[49m[41mclass="glass-input">[49m
+  [36m1031[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1034:25[24m[39m
+  [36m1033[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Sports[3
+8;5;8mΓÇó[0mAchievements</label>
+  [36m1034[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" name="sports_achievements" value="{{ edit_student[13] or '' }}"[49m
+  [36m1035[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0
+m[49m[41mclass="glass-input">[49m
+  [36m1036[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1039:25[24m[39m
+  [36m1038[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<label>Calculate
+d[38;5;8mΓÇó[0mGPA</label>
+  [36m1039[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<input 
+type="text" id="gpa-edit" readonly value="{{ edit_student[10] }}"[49m
+  [36m1040[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0
+m[49m[41mclass="glass-input read-only-input">[49m
+  [36m1041[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [31merror: Require accessible name (require-accessible-name) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1052:25[24m[39m
+  [36m1051[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0mclas
+s="glass-input"[38;5;8mΓÇó[0moninput="calculateGPA('courses-container-edit')">
+  [36m1052[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<button 
+type="button" class="btn-remove"[49m
+  [36m1053[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0
+m[49m[41monclick="this.parentElement.remove(); calculateGPA('courses-container-edit')">[49m
+  [36m1054[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<svg
+[38;5;8mΓÇó[0mwidth="18"[38;5;8mΓÇó[0mheight="18"[38;5;8mΓÇó[0mfill="none"[38;5;8mΓÇó[0mstroke="currentColor"[
+38;5;8mΓÇó[0mviewBox="0[38;5;8mΓÇó[0m0[38;5;8mΓÇó[0m24[38;5;8mΓÇó[0m24">
+<markup[38;5;33mlint[0m> [31merror: Require the "h1" element (required-h1) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1:1[24m[39m
+  [36m  1[39m: [41m<[49m!DOCTYPE[38;5;8mΓÇó[0mhtml>
+  [36m  2[39m: <html[38;5;8mΓÇó[0mlang="en">
+<markup[38;5;33mlint[0m> [38;5;208mwarning: Use the "li" element (use-list) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:595:83[24m[0m
+  [36m594[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<butt
+on[38;5;8mΓÇó[0mtype="button"[38;5;8mΓÇó[0mclass="btn-secondary"
+  [36m595[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0monclick="addCourseField('courses-container-add')">[41m[49m
+  [36m596[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓ
+ÇóΓÇóΓÇó[0m[49m[41m+ Add Course[49m
+  [36m597[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m
+[49m[41m[49m</button>
+  [36m598[39m: 
+<markup[38;5;33mlint[0m> [38;5;208mwarning: Use the "li" element (use-list) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:837:237[24m[0m
+  [36m836[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<div
+[38;5;8mΓÇó[0mstyle="display:flex;[38;5;8mΓÇó[0mjustify-content:space-between;[38;5;8mΓÇó[0malign-items:center;[3
+8;5;8mΓÇó[0mmargin-bottom:15px;">
+  [36m837[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<button[38;5;8mΓÇó[0mtype="button"[38;5;8mΓÇó[0monclick="addQuestionDOM()"[38;5;8mΓÇó[0mclass="premium-btn
+"[38;5;8mΓÇó[0mstyle="background:[38;5;8mΓÇó[0mrgba(245,[38;5;8mΓÇó[0m158,[38;5;8mΓÇó[0m11,[38;5;8mΓÇó[0m0.2)
+;[38;5;8mΓÇó[0mcolor:[38;5;8mΓÇó[0m#f59e0b;[38;5;8mΓÇó[0mborder-color:[38;5;8mΓÇó[0mrgba(245,[38;5;8mΓÇó[0m15
+8,[38;5;8mΓÇó[0m11,[38;5;8mΓÇó[0m0.4);[38;5;8mΓÇó[0mfont-size:12px;[38;5;8mΓÇó[0mpadding:[38;5;8mΓÇó[0m6px[3
+8;5;8mΓÇó[0m12px;">[41m+ Add Question[49m</button>
+  [36m838[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</div>
+<markup[38;5;33mlint[0m> [38;5;208mwarning: Use the "li" element (use-list) 
+[4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:1063:112[24m[0m
+  [36m1062[39m: 
+  [36m1063[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m<button[38;5;8mΓÇó[0mtype="button"[38
+;5;8mΓÇó[0mclass="btn-secondary"[38;5;8mΓÇó[0monclick="addCourseField('courses-container-edit')">[41m[49m
+  [36m1064[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[49m[41m+ Add 
+Course[49m
+  [36m1065[39m: [41m[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[49m[41m[49m</button>
+  [36m1066[39m: 
+<markup[38;5;33mlint[0m> [31merror: The child element requires the "row" role. Or, require aria-busy="true" 
+(wai-aria) [4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:672:37[24m[39m
+  [36m671[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m</thead>
+  [36m672[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<tbody id="attendance-history-body">[49m
+  [36m673[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇóΓÇóΓÇóΓÇóΓÇó[0m</tbody>
+<markup[38;5;33mlint[0m> [31merror: The child element requires the "row" role. Or, require aria-busy="true" 
+(wai-aria) [4mC:\Users\DELL\Desktop\projects\student-management\templates\index.html:699:29[24m[39m
+  [36m698[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m</thead>
+  [36m699[39m: 
+[38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó[0m[41m<tbody 
+id="admin-fees-body">[49m
+  [36m700[39m: [38;5;8mΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó
+ΓÇó[0m<!--[38;5;8mΓÇó[0mPopulated[38;5;8mΓÇó[0mdynamically[38;5;8mΓÇó[0mvia[38;5;8mΓÇó[0mJS[38;5;8mΓÇó[0m-->

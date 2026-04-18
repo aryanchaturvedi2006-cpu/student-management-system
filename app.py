@@ -4,6 +4,9 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 import sqlite3
 import json
 import os
+import time
+import random
+import string
 from datetime import datetime, timedelta
 from authlib.integrations.flask_client import OAuth
 from werkzeug.utils import secure_filename
@@ -27,7 +30,7 @@ else:
 app = Flask(__name__)
 # Apply ProxyFix for Render deployments (handles HTTPS behind load balancer)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
-app.secret_key = "secret123"
+app.secret_key = os.getenv('SECRET_KEY', 'default_secret_123')
 app.permanent_session_lifetime = timedelta(days=30)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB max-limit
@@ -64,6 +67,7 @@ def init_db():
             semester TEXT,
             gpa REAL,
             attendance TEXT,
+            extra_activities TEXT,
             sports_achievements TEXT,
             courses TEXT,
             stars INTEGER DEFAULT 0,
@@ -83,6 +87,8 @@ def init_db():
         cursor.execute("ALTER TABLE students ADD COLUMN stars INTEGER DEFAULT 0")
     if 'contest_rank' not in columns:
         cursor.execute("ALTER TABLE students ADD COLUMN contest_rank TEXT DEFAULT 'Unranked'")
+    if 'extra_activities' not in columns:
+        cursor.execute("ALTER TABLE students ADD COLUMN extra_activities TEXT DEFAULT ''")
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS attendance (
@@ -184,6 +190,12 @@ def init_db():
         )
     ''')
 
+    # Migration: Add time_taken to quiz_attempts if missing
+    cursor.execute("PRAGMA table_info(quiz_attempts)")
+    qa_columns = [info[1] for info in cursor.fetchall()]
+    if 'time_taken' not in qa_columns:
+        cursor.execute("ALTER TABLE quiz_attempts ADD COLUMN time_taken INTEGER DEFAULT 0")
+
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS live_classes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -282,10 +294,13 @@ def logout():
 # -------- OAUTH ROUTES --------
 @app.route('/login/google')
 def login_google():
+    role = request.args.get('role', 'student')
+    session['oauth_role_target'] = role
+    
     # Force _scheme='https' for production deployment
     scheme = 'https' if 'onrender.com' in request.host else 'http'
     redirect_uri = url_for('authorize_google', _external=True, _scheme=scheme)
-    print(f"DEBUG: Final Redirect URI being sent to Google: {redirect_uri}")
+    print(f"DEBUG: Final Redirect URI being sent to Google [Role: {role}]: {redirect_uri}")
     return google.authorize_redirect(redirect_uri)
 
 @app.route('/authorize/google')
@@ -300,10 +315,16 @@ def authorize_google():
             picture = user_info.get('picture', '')
             provider_id = user_info.get('sub')
             
-            conn = sqlite3.connect('students.db')
-            cursor = conn.cursor()
-            
-            # Check if user exists
+            # Enforce Admin Restriction
+            target_role = session.get('oauth_role_target', 'student')
+            if target_role == 'admin':
+                if email != 'aryanchaturvedi2006@gmail.com':
+                    return "<h1>Access Denied</h1><p>Only authorized administrators can sign in with Google. <a href='/login'>Back to Login</a></p>", 403
+                user_type = 'admin'
+            else:
+                user_type = 'student'
+
+            # Link or create OAuth user
             cursor.execute("SELECT id, user_type FROM oauth_users WHERE provider=? AND provider_id=?", ('google', provider_id))
             oauth_user = cursor.fetchone()
             
@@ -313,12 +334,15 @@ def authorize_google():
                 cursor.execute('''
                     INSERT INTO oauth_users (provider, provider_id, email, name, profile_pic, user_type, created_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
-                ''', ('google', provider_id, email, name, picture, 'student', created_at))
+                ''', ('google', provider_id, email, name, picture, user_type, created_at))
                 conn.commit()
-                user_type = 'student'
                 oauth_user_id = cursor.lastrowid
             else:
-                oauth_user_id, user_type = oauth_user
+                oauth_user_id, existing_type = oauth_user
+                # Update user_type if they are authorized to switch or if it's their first time as this role
+                if existing_type != user_type and (user_type == 'admin' or existing_type == 'student'):
+                    cursor.execute("UPDATE oauth_users SET user_type=? WHERE id=?", (user_type, oauth_user_id))
+                    conn.commit()
             
             # Link to student profile
             if user_type == 'student':
@@ -368,7 +392,7 @@ def generate_notifications(student_id=None):
     alerts = []
     
     for cls in live_classes:
-        alerts.append({"type": "urgent", "msg": f"🔴 LIVE NOW: '{cls[0]}' Video Class is active! Join in 'Study Materials'."})
+        alerts.append({"type": "urgent", "msg": f"LIVE NOW: '{cls[0]}' Video Class is active! Join in 'Study Materials'."})
         
     now_date = datetime.now().date()
     tmrw_date = now_date + timedelta(days=1)
@@ -590,13 +614,12 @@ def student_dashboard():
     
     # Structure task status
     task_dashboard = []
-    from datetime import datetime as dt
-    now = dt.now()
+    now = datetime.now()
     for t in all_tasks:
         try:
-            due_dt = dt.fromisoformat(t[3])
+            due_dt = datetime.fromisoformat(t[3])
         except ValueError:
-            due_dt = dt.strptime(t[3], "%Y-%m-%dT%H:%M") # fallback
+            due_dt = datetime.strptime(t[3], "%Y-%m-%dT%H:%M") # fallback
             
         locked = now > due_dt
         
@@ -917,7 +940,6 @@ def upload_profile_pic():
     student_id = session.get('student_id')
     if not student_id: return "Admin cannot upload their own pic here", 403
     
-    import time
     filename = f"{student_id}_{int(time.time())}_{secure_filename(file.filename)}"
     os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], 'profiles'), exist_ok=True)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'profiles', filename)
@@ -964,13 +986,12 @@ def upload_document():
             return "Task not found", 404
             
         due_date_str = task_info[0]
-        from datetime import datetime as dt
         try:
-            due_datetime = dt.fromisoformat(due_date_str)
+            due_datetime = datetime.fromisoformat(due_date_str)
         except ValueError:
-            due_datetime = dt.strptime(due_date_str, "%Y-%m-%dT%H:%M")
+            due_datetime = datetime.strptime(due_date_str, "%Y-%m-%dT%H:%M")
             
-        if dt.now() > due_datetime:
+        if datetime.now() > due_datetime:
             conn.close()
             return "Deadline has strictly bypassed. System rejected the file drop.", 403
             
@@ -982,7 +1003,6 @@ def upload_document():
     # -----------------------------------------------
 
     path_dir = 'pyqs' if is_pyq else ('study_materials' if is_global else 'assignments')
-    import time
     filename = f"{int(time.time())}_{secure_filename(file.filename)}"
     os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], 'documents', path_dir), exist_ok=True)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'documents', path_dir, filename)
@@ -1017,7 +1037,6 @@ def create_assignment_task():
     if 'assignment_file' in request.files:
         file = request.files['assignment_file']
         if file.filename != '':
-            import time
             filename = f"TASK_{int(time.time())}_{secure_filename(file.filename)}"
             os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], 'documents', 'assignment_files'), exist_ok=True)
             save_path = os.path.join(app.config['UPLOAD_FOLDER'], 'documents', 'assignment_files', filename)
@@ -1079,7 +1098,6 @@ def create_custom_quiz():
     is_contest = 1 if request.form.get('is_contest') == '1' else 0
     
     questions = []
-    import json
     for i in range(1, q_count + 1):
         q_text = request.form.get(f'q_{i}_text')
         if not q_text: continue
@@ -1202,8 +1220,11 @@ def submit_quiz(quiz_id):
         score = (earned / total_possible) * 100 if total_possible > 0 else 0
 
     submit_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    cursor.execute("UPDATE quiz_attempts SET submit_time=?, answers_json=?, score=? WHERE quiz_id=? AND student_id=?", 
-                   (submit_time, json.dumps(answers), score, quiz_id, student_id))
+    submit_dt = datetime.now()
+    time_taken = int((submit_dt - start_dt).total_seconds())
+    
+    cursor.execute("UPDATE quiz_attempts SET submit_time=?, answers_json=?, score=?, time_taken=? WHERE quiz_id=? AND student_id=?", 
+                   (submit_time, json.dumps(answers), score, time_taken, quiz_id, student_id))
     conn.commit()
     conn.close()
     return redirect(url_for('student_dashboard'))
@@ -1219,7 +1240,6 @@ def create_live_class():
     if session.get('role') != 'admin': return redirect(url_for('login'))
     title = request.form.get('title', 'Online Class')
     # Generate unique 9 character meet code e.g. "edu-abcd-xyz"
-    import random, string
     code = f"edu-{''.join(random.choices(string.ascii_lowercase, k=4))}-{''.join(random.choices(string.ascii_lowercase, k=4))}"
     
     conn = sqlite3.connect('students.db')
@@ -1286,7 +1306,6 @@ def delete_document(doc_id):
 
 @app.route('/api/leaderboard')
 def get_leaderboard():
-    from flask import jsonify
     conn = sqlite3.connect('students.db')
     cursor = conn.cursor()
     # Fetch students and their contest performance
