@@ -11,13 +11,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script>
         function showTab(tabId, el) {
+            if (window.event) window.event.preventDefault();
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
 
-            document.getElementById(tabId).classList.add('active');
+            const target = document.getElementById(tabId);
+            if (target) {
+                target.classList.add('active');
+            }
             if (el) {
                 el.classList.add('active');
             }
+        }
+
+        // Helper to handle class edits without complex inline JS
+        function handleEditClassButtonClick(btn) {
+            const id = btn.getAttribute('data-cls-id');
+            const title = btn.getAttribute('data-cls-title');
+            openEditClassModal(id, title);
         }
 
         function closeEditModal() {
@@ -68,11 +79,11 @@
             const studentId = document.getElementById('attendance-student-select').value;
             const workspace = document.getElementById('attendance-workspace');
             if (!studentId) {
-                workspace.style.display = 'none';
+            if (workspace) workspace.style.display = 'none';
                 return;
             }
 
-            workspace.style.display = 'block';
+            if (workspace) workspace.style.display = 'block';
             document.getElementById('attendance-message').innerText = '';
 
             document.getElementById('attendance-date').valueAsDate = new Date();
@@ -182,11 +193,10 @@
                             <td>₹${f.total.toFixed(2)}</td>
                             <td><span style="color:#34d399;">₹${f.paid.toFixed(2)}</span></td>
                             <td>${f.due || '-'}</td>
-                            <td>${statusHtml}</td>
-                            <td>
-                                <button onclick="openFeeModal(${f.student_id}, '${f.name}', ${f.total}, '${f.due}')" class="btn-secondary" style="padding: 6px 12px; font-size:12px;">Assign Fee</button>
-                                <button onclick="openRecordPaymentModal(${f.student_id}, '${f.name}')" class="premium-btn" style="padding: 6px 12px; font-size:12px; margin-left: 5px;">Record Payment</button>
-                            </td>
+                            <td>${statusHtml}                                <td>
+                                    <button class="btn-secondary" style="padding: 6px 12px; font-size:12px;" onclick="openFeeModal(${f.student_id}, '${f.name.replace(/'/g, "\\'")}', ${f.total}, '${f.due}')">Assign Fee</button>
+                                    <button class="premium-btn" style="padding: 6px 12px; font-size:12px; margin-left: 5px;" onclick="openRecordPaymentModal(${f.student_id}, '${f.name.replace(/'/g, "\\'")}')">Record Payment</button>
+                                </td>      </td>
                         </tr>
                     `;
                 });
@@ -261,10 +271,11 @@
         }
 
         window.onload = function () {
-            calculateGPA('courses-container-add');
-            if (document.getElementById('courses-container-edit')) {
-                calculateGPA('courses-container-edit');
-            }
+            const addContainer = document.getElementById('courses-container-add');
+            if (addContainer) calculateGPA('courses-container-add');
+            
+            const editContainer = document.getElementById('courses-container-edit');
+            if (editContainer) calculateGPA('courses-container-edit');
         }
         
         let qCount = 0;
@@ -278,17 +289,17 @@
             
             block.innerHTML = `
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label style="color:#b0a8fe; font-weight:600;">Question ${qCount}</label>
+                    <label id="q_${qCount}_label" for="q_${qCount}_input" style="color:#b0a8fe; font-weight:600;">Question ${qCount}</label>
                     <div style="display:flex; align-items:center; gap: 10px;">
-                        <label style="margin:0; font-size:11px;">Points/Marks:</label>
-                        <input type="number" name="q_${qCount}_marks" value="1" min="1" class="glass-input" style="width: 60px; padding: 4px; font-size: 12px; margin:0;" required>
+                        <label for="q_${qCount}_marks_input" style="margin:0; font-size:11px;">Points/Marks:</label>
+                        <input type="number" id="q_${qCount}_marks_input" name="q_${qCount}_marks" value="1" min="1" class="glass-input" style="width: 60px; padding: 4px; font-size: 12px; margin:0;" required>
                     </div>
                 </div>
                 
-                <input type="text" name="q_${qCount}_text" class="glass-input" placeholder="Type the question down here..." required style="margin-top: 10px;">
+                <input type="text" id="q_${qCount}_input" name="q_${qCount}_text" class="glass-input" placeholder="Type the question down here..." required style="margin-top: 10px;">
                 
-                <label style="margin-top:10px;">Answer Mode</label>
-                <select name="q_${qCount}_type" class="glass-input" onchange="document.getElementById('q${qCount}_opts').style.display = this.value=='mcq'?'block':'none'">
+                <label for="q_${qCount}_type_select" style="margin-top:10px;">Answer Mode</label>
+                <select id="q_${qCount}_type_select" name="q_${qCount}_type" class="glass-input" onchange="document.getElementById('q${qCount}_opts').style.display = this.value=='mcq'?'block':'none'">
                     <option value="mcq">Multiple Choice Grid</option>
                     <option value="text">Written Essay/Text</option>
                 </select>
@@ -329,44 +340,44 @@
                 <span class="badge">Admin Hub</span>
             </div>
             <nav class="sidebar-nav">
-                <a href="#" class="nav-link active" onclick="showTab('dashboard-tab', this)">
+                <a href="#" class="nav-link active" onclick="showTab('dashboard-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                     Dashboard
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('add-student-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('add-student-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                     Manage Students
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('attendance-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('attendance-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
                     Attendance
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('fee-tab', this); loadAdminFees();">
+                <a href="#" class="nav-link" onclick="showTab('fee-tab', this); loadAdminFees(); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Fee Management
                 </a>
                 <hr style="border:0; border-top: 1px solid rgba(255,255,255,0.08); margin: 10px 16px;">
-                <a href="#" class="nav-link" onclick="showTab('classes-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('classes-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"></path></svg>
                     Live Classes
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('assignments-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('assignments-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     Assignments
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('quizzes-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('quizzes-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Live Quizzes
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('weekly-contest-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('weekly-contest-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     Weekly Contest
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('resources-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('resources-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     Global Resources
                 </a>
-                <a href="#" class="nav-link" onclick="showTab('pyq-repo-tab', this)">
+                <a href="#" class="nav-link" onclick="showTab('pyq-repo-tab', this); return false;">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     PYQ Repository
                 </a>
@@ -528,63 +539,59 @@
                         <form method="POST" action="/" class="dashboard-form">
                             <div class="form-grid">
                                 <div class="input-group">
-                                    <label>Full Name</label>
-                                    <input type="text" name="name" required class="glass-input">
+                                    <label for="student_name">Full Name</label>
+                                    <input type="text" id="student_name" name="name" required class="glass-input">
                                 </div>
                                 <div class="input-group">
-                                    <label>Roll Number</label>
-                                    <input type="text" name="roll" required class="glass-input">
+                                    <label for="student_roll">Roll Number</label>
+                                    <input type="text" id="student_roll" name="roll" required class="glass-input">
                                 </div>
                                 <div class="input-group">
-                                    <label>Age</label>
-                                    <input type="number" name="age" class="glass-input">
+                                    <label for="student_age">Age</label>
+                                    <input type="number" id="student_age" name="age" class="glass-input">
                                 </div>
                                 <div class="input-group">
-                                    <label>Date of Birth</label>
-                                    <input type="date" name="dob" class="glass-input">
+                                    <label for="student_dob">Date of Birth</label>
+                                    <input type="date" id="student_dob" name="dob" class="glass-input">
                                 </div>
                                 <div class="input-group">
-                                    <label>Gender</label>
-                                    <input type="text" name="gender" class="glass-input">
+                                    <label for="student_gender">Gender</label>
+                                    <input type="text" id="student_gender" name="gender" class="glass-input">
                                 </div>
                                 <div class="input-group">
-                                    <label>Phone</label>
-                                    <input type="text" name="phone" class="glass-input">
+                                    <label for="student_phone">Phone</label>
+                                    <input type="text" id="student_phone" name="phone" class="glass-input">
                                 </div>
                                 <div class="input-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" class="glass-input">
+                                    <label for="student_email">Email</label>
+                                    <input type="email" id="student_email" name="email" class="glass-input">
                                 </div>
                                 <div class="input-group">
-                                    <label>Semester</label>
-                                    <input type="text" name="semester" class="glass-input">
+                                    <label for="student_semester">Semester</label>
+                                    <input type="text" id="student_semester" name="semester" class="glass-input">
+                                </div>
+                                <div class="input-group" style="grid-column: span 2;">
+                                    <label for="student_address">Home Address</label>
+                                    <textarea id="student_address" name="address" class="glass-input" rows="2"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label for="student_attendance">Base Attendance %</label>
+                                    <input type="number" id="student_attendance" name="attendance" step="0.1" class="glass-input" value="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="student_extra">Extra Activities</label>
+                                    <input type="text" id="student_extra" name="extra_activities" class="glass-input">
+                                </div>
+                                <div class="input-group">
+                                    <label for="student_sports">Sports Achievements</label>
+                                    <input type="text" id="student_sports" name="sports_achievements" class="glass-input">
                                 </div>
                             </div>
 
-                            <div class="input-group" style="margin-top: 15px;">
-                                <label>Address</label>
-                                <input type="text" name="address" class="glass-input">
-                            </div>
-
-                            <div class="form-grid" style="margin-top: 15px;">
-                                <div class="input-group">
-                                    <label>Global Attendance %</label>
-                                    <input type="text" name="attendance" class="glass-input"
-                                        placeholder="(Optional global override)">
-                                </div>
-                                <div class="input-group">
-                                    <label>Extra Activities</label>
-                                    <input type="text" name="extra_activities" class="glass-input">
-                                </div>
-                                <div class="input-group">
-                                    <label>Sports Achievements</label>
-                                    <input type="text" name="sports_achievements" class="glass-input">
-                                </div>
-                                <div class="input-group gpa-display">
-                                    <label>Calculated GPA</label>
-                                    <input type="text" id="gpa-add" readonly value="0.00"
-                                        class="glass-input read-only-input">
-                                </div>
+                            <div class="input-group gpa-display">
+                                <label>Calculated GPA</label>
+                                <input type="text" id="gpa-add" readonly value="0.00"
+                                    class="glass-input read-only-input">
                             </div>
 
                             <h4 class="section-subtitle">Registered Courses</h4>
@@ -732,7 +739,11 @@
                                             <td>
                                                 <div style="display:flex; gap: 5px;">
                                                     <a href="/join_class/{{ cls[2] }}" class="premium-btn" style="padding: 4px 8px; font-size: 11px; text-decoration:none;">Host Space</a>
-                                                    <button onclick="openEditClassModal({{ cls[0] }}, '{{ cls[1] }}')" class="btn-edit" title="Edit Class" style="padding:4px; background:rgba(255,255,255,0.05);">
+                                                    <button class="btn-edit" 
+                                                            data-cls-id="{{ cls[0] }}" 
+                                                            data-cls-title="{{ cls[1] }}" 
+                                                            onclick="handleEditClassButtonClick(this)"
+                                                            title="Edit Class" style="padding:4px; background:rgba(255,255,255,0.05);">
                                                         <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036L18.5 7.5M8.978 9.86l3.003 3.002L21 4 18 1 8.978 9.86zm-6.684 5.485L2 22l6.654-2.294-6.36-6.36z"></path></svg>
                                                     </button>
                                                     <a href="/end_live_class/{{ cls[0] }}" class="premium-btn" style="padding: 4px 8px; font-size: 11px; text-decoration:none; background: rgba(239, 68, 68, 0.2); color:#ef4444; border-color: rgba(239, 68, 68, 0.4);">Close</a>
@@ -840,7 +851,7 @@
                     </div>
 
                     <div class="glass-panel-dark" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: rgba(255,215,0,0.02); margin-top: 20px;">
-                        <h4 style="color: #ffd700; margin-top:0;">🏆 Contest Management</h4>
+                        <h4 style="color: #ffd700; margin-top:0;">Contest Management</h4>
                         <p style="font-size: 11px; color: #9ca3af; margin-bottom: 12px;">Finalize the last weekly contest to calculate rankings and award stars to participants.</p>
                         <form method="POST" action="/admin/finalize_contest">
                             <button type="submit" class="premium-btn" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border-color: rgba(255, 215, 0, 0.4); width: auto; padding: 8px 16px; font-size:12px;">Finalize Latest Contest & Award Stars</button>
@@ -848,7 +859,7 @@
                     </div>
                 </div>
 
-                <!-- TAB 8: RESOURCES -->
+                <!-- TAB 8: GLOBAL RESOURCES -->
                 <div id="resources-tab" class="tab-content">
                     <h4 class="section-subtitle">Upload Shared Study Material</h4>
                     <div class="glass-panel-dark" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 40px;">
@@ -891,7 +902,7 @@
                     </div>
                 </div>
 
-                <!-- TAB 8: PYQ REPOSITORY -->
+                <!-- TAB 9: PYQ REPOSITORY -->
                 <div id="pyq-repo-tab" class="tab-content">
                     <div class="section-header">
                         <h3>Manage Previous Year Papers (PYQs)</h3>
@@ -941,7 +952,7 @@
                     </div>
                     
                     <div class="glass-panel-dark" style="padding: 20px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: rgba(255,215,0,0.02); margin-bottom: 30px;">
-                        <h4 style="color: #ffd700; margin-top:0;">🏆 Finalize & Rank</h4>
+                        <h4 style="color: #ffd700; margin-top:0;">Finalize & Rank</h4>
                         <p style="font-size: 11px; color: #9ca3af; margin-bottom: 12px;">Process scores and award individual rankings (Platinum/Gold/Silver) and Stars for the most recent Saturday contest.</p>
                         <form method="POST" action="/admin/finalize_contest">
                             <button type="submit" class="premium-btn" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border-color: rgba(255, 215, 0, 0.4); width: auto; padding: 10px 20px;">Finalize Latest Contest & Award Stars</button>
