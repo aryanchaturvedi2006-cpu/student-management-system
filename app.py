@@ -325,6 +325,8 @@ def authorize_google():
                 user_type = 'student'
 
             # Link or create OAuth user
+            conn = sqlite3.connect('students.db')
+            cursor = conn.cursor()
             cursor.execute("SELECT id, user_type FROM oauth_users WHERE provider=? AND provider_id=?", ('google', provider_id))
             oauth_user = cursor.fetchone()
             
